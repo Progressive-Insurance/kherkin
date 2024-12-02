@@ -1,0 +1,111 @@
+<resources>
+<!--  MainActivity/Fragment  -->
+    <string name="app_name">Kherkin Sample App</string>
+    <string name="button_1">Button 1</string>
+    <string name="button_2">Button 2</string>
+    <string name="toolbar_title_1">Test 1</string>
+    <string name="toolbar_title_2">Test 2</string>
+
+    <string name="text_view_banner">Kherkin Sample App TextView</string>
+    <string name="text_view_banner_error">Please correct the errors below</string>
+
+    <string name="edit_text_hint">Sample EditText</string>
+    <string name="edit_text_clear_button">Clear field</string>
+
+    <string name="button_text">Button</string>
+    <string name="button_main_click_counter">Clicked: %1$d times</string>
+
+    <string-array name="options_array_short">
+        <item>Default Spinner Item</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
+
+    <string name="alert_button">Button for Alert</string>
+    <string name="alert_button_description">Shows alert</string>
+    <string name="alert_button_ok_clicked">OK clicked</string>
+    <string name="alert_button_cancel_clicked">Cancel clicked</string>
+    <string name="alert_title">Title</string>
+    <string name="alert_message">Test message</string>
+    <string name="alert_ok">OK</string>
+    <string name="alert_cancel">Cancel</string>
+
+    <string name="date_picker_hint">Date Picker</string>
+    <string name="date_spinner_hint">Date Spinner</string>
+    <string name="time_picker_hint">Time Picker</string>
+
+    <string name="button_navigate">Navigate</string>
+    <string name="navigate_to_compose_button">Navigate to Compose Activity</string>
+
+<!--  ButtonActivity  -->
+    <string name="button_activity_title">Button Activity</string>
+    <string name="button_click_counter_zero">Clicks: 0</string>
+    <string name="button_click_counter_clicked">Clicks: %1$d</string>
+    <string name="button_left_visibility">Left Visibility</string>
+    <string name="button_right_visibility">Right Visibility</string>
+    <string name="button_right_visibility_description">Default invisible</string>
+    <string name="button_left_enabled">Left Enabled</string>
+    <string name="button_right_enabled">Right Enabled</string>
+    <string name="radio_button_a">Radio Button A</string>
+    <string name="radio_button_b">Radio Button B</string>
+    <string name="radio_button_c">Radio Button C</string>
+    <string name="segment_button_1">Button 1</string>
+    <string name="segment_button_2">Button 2</string>
+    <string name="segment_button_3">Button 3</string>
+    <string name="checkbox_enabled">Enabled</string>
+    <string name="checkbox_disabled">Disabled</string>
+    <string name="checkbox_invisible">Invisible</string>
+    <string name="check_box_label">Check Box Label</string>
+    <string name="text_view_with_link">This link does not navigate, but it does make some buttons invisible.</string>
+    <string name="text_view_with_clickable_span">Meanwhile this one makes them visible again.</string>
+    <string name="button_web_view">Launch WebView</string>
+    <string name="button_visibility_delay">Visibility Delay</string>
+    <string name="text_view_delay">Delayed Visibility</string>
+    <string name="button_share">Share</string>
+    <string name="share_message">Hello from Kherkin!</string>
+
+<!--  ListActivity  -->
+    <string name="list_activity_title">List Activity</string>
+    <string name="list_item_text">This is list item number: %1$d/100</string>
+    <string name="button_clicked">Clicked</string>
+
+<!--  ViewPagerActivity  -->
+    <string name="view_pager_activity_title">ViewPager Activity</string>
+    <string name="button_navigate_to_final">Navigate to Final Activity</string>
+    <string name="view_pager_text_view">View Pager sample</string>
+    <string name="tab_text">Page %1$d</string>
+
+<!--  FinalActivity  -->
+    <string name="button_return">Return to Main</string>
+    <string name="text_view_more">More lies below</string>
+    <string name="text_view_bottom">Nearly the bottom</string>
+    <string name="text_view_bottom_description">Nearly the bottom</string>
+    <string name="edit_text_bottom">Bottom</string>
+
+<!--  TextFieldActivity  -->
+    <string name="text_field_activity_title">Text Activity</string>
+    <string name="edit_text_enabled">Enabled</string>
+    <string name="edit_text_disabled">Disabled</string>
+    <string name="edit_text_visible">Visible</string>
+    <string name="edit_text_invisible">Invisible</string>
+    <string name="text_view_input">Number Input:</string>
+    <string name="edit_text_hint_below">Hide below field</string>
+    <string name="text_view_masked">Masked text is empty</string>
+    <string name="text_view_hides">Hides:</string>
+    <string name="edit_text_hidden">To be hidden</string>
+    <string name="masked_text">Masked text: %1$s</string>
+    <string name="masked_text_empty">Masked text is empty</string>
+
+<!--  WebViewActivity  -->
+    <string name="web_view_title">Web View Activity</string>
+    <string name="web_url">https://developer.android.com/</string>
+
+<!--  BasicComposeActivity  -->
+    <string name="hello">Hello user!</string>
+    <string name="basic_button">Click Me</string>
+    <string name="basic_button_clicked">Button Clicked</string>
+    <string name="hide_button">Hide Me</string>
+    <string name="label">Label</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="prefilled_text_field">Default text</string>
+</resources>

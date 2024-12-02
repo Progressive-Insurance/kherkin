@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_pager_item"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/light_grey"
+    android:paddingBottom="96dp">
+
+    <TextView
+        android:id="@+id/textViewPagerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="96dp"
+        android:text="@string/view_pager_text_view"
+        android:textSize="100sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

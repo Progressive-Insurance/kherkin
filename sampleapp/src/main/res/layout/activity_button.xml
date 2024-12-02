@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonClickCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="counter"
+        android:text="@string/button_click_counter_zero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonVisibilityLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_left_visibility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonClickCounter" />
+
+    <Button
+        android:id="@+id/buttonVisibilityRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/button_right_visibility_description"
+        android:tag="invisible button"
+        android:text="@string/button_right_visibility"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/buttonVisibilityLeft"
+        app:layout_constraintTop_toBottomOf="@id/buttonClickCounter" />
+
+    <Button
+        android:id="@+id/buttonEnabledLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/button_left_enabled"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVisibilityLeft" />
+
+    <Button
+        android:id="@+id/buttonEnabledRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_right_enabled"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/buttonEnabledLeft"
+        app:layout_constraintTop_toBottomOf="@+id/buttonVisibilityLeft" />
+
+    <RadioGroup
+        android:id="@+id/radioButtonGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEnabledRight">
+
+        <RadioButton
+            android:id="@+id/radioButtonA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_a"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <RadioButton
+            android:id="@+id/radioButtonB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_b"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButtonA" />
+
+        <RadioButton
+            android:id="@+id/radioButtonC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/radio_button_c"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioButtonB" />
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButtonGroup"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/segmentButton1"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/segment_button_1" />
+
+        <Button
+            android:id="@+id/segmentButton2"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/segment_button_2" />
+
+        <Button
+            android:id="@+id/segmentButton3"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/segment_button_3" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <CheckBox
+        android:id="@+id/checkboxEnabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_enabled"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleGroup" />
+
+    <CheckBox
+        android:id="@+id/checkboxDisabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/checkbox_disabled"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/checkboxEnabled"
+        app:layout_constraintTop_toBottomOf="@+id/toggleGroup" />
+
+    <CheckBox
+        android:id="@+id/checkboxInvisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkbox_invisible"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/checkboxDisabled"
+        app:layout_constraintTop_toBottomOf="@+id/toggleGroup" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/checkboxLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxInvisible">
+
+        <CheckBox
+            android:id="@+id/checkControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.325"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/checkControlText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:labelFor="@+id/checkControl"
+            android:text="@string/check_box_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/checkControl"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textViewWithLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/text_view_with_link"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkboxLayout" />
+
+    <TextView
+        android:id="@+id/textViewWithClickableSpan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="@string/text_view_with_clickable_span"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWithLink" />
+
+    <Button
+        android:id="@+id/buttonWebView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_web_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewWithClickableSpan" />
+
+    <RelativeLayout
+        android:id="@+id/delayContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonWebView">
+
+        <Button
+            android:id="@+id/buttonVisibilityDelay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:text="@string/button_visibility_delay" />
+
+        <TextView
+            android:id="@+id/textViewDelay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/buttonVisibilityDelay"
+            android:text="@string/text_view_delay"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_share"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delayContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

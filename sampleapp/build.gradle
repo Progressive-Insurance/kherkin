@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+plugins {
+    alias libs.plugins.com.android.application
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.androidx.navigation.safeargs
+    alias libs.plugins.compose.compiler
+}
+
+android {
+    namespace 'com.progressive.kherkin.sampleapp'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.progressive.kherkin.sampleapp"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
+        compose true
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    testOptions {
+        execution "ANDROIDX_TEST_ORCHESTRATOR"
+        managedDevices {
+            localDevices {
+                pixel5api34 {
+                    device = "Pixel 5"
+                    apiLevel = 34
+                    systemImageSource = "google"
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    def composeBom = platform(libs.compose.bom)
+    implementation composeBom
+    androidTestImplementation composeBom
+
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.activity.compose
+    implementation libs.compose.ui
+    implementation libs.compose.tooling.preview
+    implementation libs.compose.material3
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation project(':common')
+    androidTestImplementation project(':compose')
+    androidTestImplementation project(':espresso')
+    androidTestUtil libs.androidx.orchestrator
+
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.fragment.ktx
+
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
+
+    compileOnly libs.viewbinding
+    debugImplementation libs.compose.tooling
+    debugImplementation libs.compose.manifest
+}

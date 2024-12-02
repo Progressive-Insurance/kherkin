@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonFinal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="navigateToMain"
+            android:text="@string/button_return"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="32dp"
+            android:text="@string/text_view_more"
+            app:layout_constraintBottom_toTopOf="@id/editTextBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonFinal" />
+
+        <TextView
+            android:id="@+id/textViewBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/text_view_bottom_description"
+            android:text="@string/text_view_bottom"
+            app:layout_constraintBottom_toTopOf="@id/editTextBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="800dp"
+            android:autofillHints="no"
+            android:hint="@string/edit_text_bottom"
+            android:inputType="text"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonFinal" />
+
+        <Button
+            android:id="@+id/buttonBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toEndOf="@+id/editTextBottom"
+            app:layout_constraintTop_toTopOf="@id/editTextBottom" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

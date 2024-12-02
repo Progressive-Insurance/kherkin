@@ -1,0 +1,88 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+plugins {
+    alias libs.plugins.jfrog
+    alias libs.plugins.com.android.library
+    alias libs.plugins.kotlin.android
+    id 'maven-publish'
+}
+
+def getVersionName = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--always'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return null
+    }
+}
+
+android {
+    namespace 'com.progressive.kherkin.espresso'
+    compileSdk 34
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 34
+        versionName getVersionName()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.junit
+    implementation libs.androidx.junit
+    api(libs.androidx.uiautomator)
+    api(libs.espresso.core)
+    api(libs.espresso.contrib)
+    api(project(':common'))
+}
+
+publishing {
+    publications {
+        aarEspresso(MavenPublication) {
+            groupId 'com.progressive.kherkin'
+            artifactId 'kherkin-espresso'
+            version android.defaultConfig.versionName
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
+
+artifactoryPublish {
+    publications(publishing.publications.aarEspresso)
+}

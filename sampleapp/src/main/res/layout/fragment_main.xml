@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:hint="@string/edit_text_hint"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/buttonClearEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/edit_text_clear_button"
+        android:src="@drawable/baseline_backspace_24"
+        android:tag="backspace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toTopOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/button_text"
+        android:tag="clicky button"
+        android:text="@string/button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/options_array_short"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/buttonAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/alert_button_description"
+        android:onClick="showAlertDialog"
+        android:text="@string/alert_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <EditText
+        android:id="@+id/textDatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/date_picker_hint"
+        android:inputType="date"
+        android:longClickable="false"
+        android:onClick="showDatePickerDialog"
+        android:text=""
+        app:layout_constraintEnd_toStartOf="@+id/textDateSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlert" />
+
+    <EditText
+        android:id="@+id/textDateSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/date_spinner_hint"
+        android:inputType="date"
+        android:longClickable="false"
+        android:onClick="showDateSpinnerDialog"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlert" />
+
+    <EditText
+        android:id="@+id/textTimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/time_picker_hint"
+        android:inputType="date"
+        android:longClickable="false"
+        android:onClick="showTimePickerDialog"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textDateSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAlert" />
+
+    <Button
+        android:id="@+id/buttonNav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_navigate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTimePicker" />
+
+    <Button
+        android:id="@+id/buttonNavCompose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/navigate_to_compose_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNav" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

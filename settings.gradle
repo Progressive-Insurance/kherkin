@@ -1,0 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'Kherkin'
+include ':sampleapp'
+include ':compose'
+include ':espresso'
+include ':common'

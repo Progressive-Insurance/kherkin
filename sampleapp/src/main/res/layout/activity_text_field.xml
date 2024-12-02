@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/textConstraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editTextEnabledLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:hint="@string/edit_text_enabled"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDisabledRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:enabled="false"
+        android:hint="@string/edit_text_disabled"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/editTextEnabledLeft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextVisibleLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:hint="@string/edit_text_visible"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnabledLeft" />
+
+    <EditText
+        android:id="@+id/editTextInvisibleRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="no"
+        android:hint="@string/edit_text_invisible"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/editTextVisibleLeft"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnabledLeft" />
+
+    <RelativeLayout
+        android:id="@+id/editTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextVisibleLeft">
+
+        <TextView
+            android:id="@+id/textViewLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/editTextWithLabel"
+            android:text="@string/text_view_input" />
+
+        <EditText
+            android:id="@+id/editTextWithLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:autofillHints="no"
+            android:hint="@string/edit_text_hint_below"
+            android:imeOptions="actionNext"
+            android:inputType="numberPassword" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewNumberInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_masked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContainer" />
+
+    <RelativeLayout
+        android:id="@+id/editTextContainer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumberInput">
+
+        <TextView
+            android:id="@+id/textViewLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/editTextWithLabel2"
+            android:text="@string/text_view_hides" />
+
+        <EditText
+            android:id="@+id/editTextWithLabel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:autofillHints="no"
+            android:hint="@string/edit_text_hidden"
+            android:imeOptions="actionNext"
+            android:inputType="number" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

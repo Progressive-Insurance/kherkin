@@ -1,0 +1,62 @@
+[versions]
+activityCompose = "1.9.3"
+androidGradlePlugin = "8.6.1"
+androidxJunit = "1.2.1"
+androidxNavigation = "2.8.4"
+androidxRules = "1.6.1"
+androidxRunner = "1.6.2"
+androidxSafeargs = "2.8.4"
+androidxUiautomator = "2.3.0"
+appcompat = "1.7.0"
+composeBom = "2024.11.00"
+constraintlayout = "2.2.0"
+espresso = "3.6.1"
+findbugs = "3.0.2"
+fragmentKtx = "1.8.5"
+javaxInject = "1"
+jfrogGradle = "4.24.16"
+junit = "4.13.2"
+kotlin = "2.0.21"
+lifecycleViewmodelKtx = "2.8.7"
+material = "1.12.0"
+orchestrator = "1.5.1"
+viewbinding = "8.7.2"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidxNavigation" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidxNavigation" }
+androidx-orchestrator = { module = "androidx.test:orchestrator", version.ref = "orchestrator" }
+androidx-rules = { group = "androidx.test", name = "rules", version.ref = "androidxRules" }
+androidx-runner = { group = "androidx.test", name = "runner", version.ref = "androidxRunner" }
+androidx-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxUiautomator" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+compose-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-test = { module = "androidx.compose.ui:ui-test-android" }
+compose-testing = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espresso" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+findbugs = { group = "com.google.code.findbugs", name = "jsr305", version.ref = "findbugs" }
+javax-inject = { module = "javax.inject:javax.inject", version.ref = "javaxInject" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+viewbinding = { module = "com.android.databinding:viewbinding", version.ref = "viewbinding" }
+
+[plugins]
+androidx-navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxSafeargs" }
+com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jfrog = { id = "com.jfrog.artifactory", version.ref = "jfrogGradle" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
