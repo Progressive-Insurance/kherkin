@@ -1,0 +1,46 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  run_unit_tests:
+    name: Build and Unit Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Run Unit Tests
+      run: ./gradlew common:testDebug
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          **/common/build/test-results/testDebugUnitTest/TEST-*.xml
+  run_ui_tests:
+    name: Build and UI Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Run UI Tests
+      run: ./gradlew sampleapp:pixel5api34DebugAndroidTest
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          sampleapp/build/outputs/androidTest-results/managedDevice/debug/pixel5api34/*.xml
+  build_kherkin:
+    name: Build Kherkin
+    runs-on: ubuntu-latest
+    needs: [run_unit_tests, run_ui_tests]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build
+      run: ./gradlew assembleRelease --stacktrace
