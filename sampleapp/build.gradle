@@ -9,7 +9,6 @@ plugins {
     alias libs.plugins.com.android.application
     alias libs.plugins.kotlin.android
     alias libs.plugins.compose.compiler
-    alias libs.plugins.androidx.navigation.safeargs
 }
 
 android {
