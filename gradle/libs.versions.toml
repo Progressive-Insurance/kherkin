@@ -20,7 +20,7 @@ kotlin = "2.0.21"
 lifecycleViewmodelKtx = "2.8.7"
 material = "1.12.0"
 orchestrator = "1.5.1"
-viewbinding = "8.7.2"
+viewbinding = "8.7.3"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
@@ -54,7 +54,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 viewbinding = { module = "com.android.databinding:viewbinding", version.ref = "viewbinding" }
 
 [plugins]
-androidx-navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxSafeargs" }
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
