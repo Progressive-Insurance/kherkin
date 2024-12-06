@@ -1,6 +1,6 @@
 [versions]
 activityCompose = "1.9.3"
-androidGradlePlugin = "8.6.1"
+androidGradlePlugin = "8.7.3"
 androidxJunit = "1.2.1"
 androidxNavigation = "2.8.4"
 androidxRules = "1.6.1"
@@ -20,7 +20,7 @@ kotlin = "2.0.21"
 lifecycleViewmodelKtx = "2.8.7"
 material = "1.12.0"
 orchestrator = "1.5.1"
-viewbinding = "8.7.2"
+viewbinding = "8.7.3"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
