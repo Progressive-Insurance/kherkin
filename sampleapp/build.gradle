@@ -42,11 +42,11 @@ android {
     testOptions {
         execution "ANDROIDX_TEST_ORCHESTRATOR"
         managedDevices {
-            localDevices {
-                pixel5api34 {
+            devices {
+                pixel5api34 (ManagedVirtualDevice) {
                     device = "Pixel 5"
                     apiLevel = 34
-                    systemImageSource = "google"
+                    systemImageSource = "aosp"
                 }
             }
         }
