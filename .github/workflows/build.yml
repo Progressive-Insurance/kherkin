@@ -42,6 +42,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Setup emus
+        run: ./gradlew sampleapp:pixel5api34Setup
       - name: Run UI Tests
         run: ./gradlew sampleapp:pixel5api34DebugAndroidTest
     # - name: Publish Test Results
