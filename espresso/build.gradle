@@ -12,20 +12,6 @@ plugins {
     id 'maven-publish'
 }
 
-def getVersionName = { ->
-    try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine 'git', 'describe', '--always'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
-    }
-    catch (ignored) {
-        return null
-    }
-}
-
 android {
     namespace 'com.progressive.kherkin.espresso'
     compileSdk 34
@@ -74,7 +60,7 @@ publishing {
         aarEspresso(MavenPublication) {
             groupId 'com.progressive.kherkin'
             artifactId 'kherkin-espresso'
-            version android.defaultConfig.versionName
+            version = '1.0.0'
 
             afterEvaluate {
                 from components.release

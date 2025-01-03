@@ -5,7 +5,6 @@ androidxJunit = "1.2.1"
 androidxNavigation = "2.8.4"
 androidxRules = "1.6.1"
 androidxRunner = "1.6.2"
-androidxSafeargs = "2.8.4"
 androidxUiautomator = "2.3.0"
 appcompat = "1.7.0"
 composeBom = "2024.11.00"
@@ -54,7 +53,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 viewbinding = { module = "com.android.databinding:viewbinding", version.ref = "viewbinding" }
 
 [plugins]
-androidx-navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "androidxSafeargs" }
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
