@@ -10,6 +10,7 @@ plugins {
     alias libs.plugins.com.android.library
     alias libs.plugins.kotlin.android
     id 'maven-publish'
+    id 'signing'
 }
 
 android {
@@ -55,6 +56,13 @@ dependencies {
     api(libs.compose.test)
     api(libs.compose.testing)
     api(project(':common'))
+}
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+signing {
+    required = { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+    sign publishing.publications.aarCompose
 }
 
 publishing {
