@@ -24,11 +24,6 @@ jobs:
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
       - name: Run Unit Tests
         run: ./gradlew common:testDebug
-      # - name: Publish Test Results
-      #   uses: ???
-      #   if: success() || failure()
-      #   with:
-      #     report_paths: '**/common/build/test-results/testDebugUnitTest/TEST-*.xml'
 
   run_ui_tests:
     name: Build and UI Test
@@ -42,17 +37,15 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Download emu image
+        run: yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-34;google_apis_playstore;x86"
       - name: Create emu
         run: echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name x86 --device "pixel_5" --package "system-images;android-34;google_apis_playstore;x86" --tag "google_apis_playstore" --abi "x86"
       - name: Setup emu
         run: ./gradlew sampleapp:pixel5api34Setup
       - name: Run UI Tests
         run: ./gradlew sampleapp:pixel5api34DebugAndroidTest
-    # - name: Publish Test Results
-    #   uses: ???
-    #   if: success() || failure()
-    #   with:
-    #     report_paths: 'sampleapp/build/outputs/androidTest-results/managedDevice/debug/pixel5api34/*.xml'
+
   build_kherkin:
     name: Build Kherkin
     runs-on: ubuntu-latest
