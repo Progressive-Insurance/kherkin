@@ -25,7 +25,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew common:testDebug
       # - name: Publish Test Results
-      #   uses: mikepenz/action-junit-report@v5
+      #   uses: ???
       #   if: success() || failure()
       #   with:
       #     report_paths: '**/common/build/test-results/testDebugUnitTest/TEST-*.xml'
@@ -42,12 +42,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Setup emus
+      - name: Create emu
+        run: echo "no" | ./avdmanager --verbose create avd --force --name x86 --device "pixel_5" --package "system-images;android-34;google_apis_playstore;x86" --tag "google_apis_playstore" --abi "x86"
+      - name: Setup emu
         run: ./gradlew sampleapp:pixel5api34Setup
       - name: Run UI Tests
         run: ./gradlew sampleapp:pixel5api34DebugAndroidTest
     # - name: Publish Test Results
-    #   uses: mikepenz/action-junit-report@v5
+    #   uses: ???
     #   if: success() || failure()
     #   with:
     #     report_paths: 'sampleapp/build/outputs/androidTest-results/managedDevice/debug/pixel5api34/*.xml'
