@@ -48,6 +48,7 @@ jobs:
         run: echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name pixel5api34 --device "pixel_5" --package "system-images;android-34;google_apis_playstore;x86_64" --tag "google_apis_playstore" --abi "x86_64"
       - name: Launch emu
         run: |
+          /usr/local/lib/android/sdk/emulator/emulator -list-avds
           echo "Launching emulator $i for use..."
           /usr/local/lib/android/sdk/emulator/emulator -avd pixel5api34
           while ! [[ $(adb devices | awk 'NR>1 && /emulator/ {print $1}' | wc -l | xargs) -eq $i ]]; do sleep 1; done
