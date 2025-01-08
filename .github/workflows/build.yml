@@ -40,7 +40,7 @@ jobs:
       - name: Download emu image
         run: yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-34;google_apis_playstore;x86_64"
       - name: Create emu
-        run: echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name x86 --device "pixel_5" --package "system-images;android-34;google_apis_playstore;x86_64" --tag "google_apis_playstore" --abi "x86"
+        run: echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name x86 --device "pixel_5" --package "system-images;android-34;google_apis_playstore;x86_64" --tag "google_apis_playstore" --abi "x86_64"
       - name: Setup emu
         run: ./gradlew sampleapp:pixel5api34Setup
       - name: Run UI Tests
