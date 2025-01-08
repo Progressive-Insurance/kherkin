@@ -53,6 +53,8 @@ jobs:
             --package "system-images;android-34;google_apis_playstore;x86_64"            
           echo "List AVDs:"
           /usr/local/lib/android/sdk/emulator/emulator -list-avds
+          echo "Try #2:"
+          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager list avd
       - name: Launch emu
         run: |
           /usr/local/lib/android/sdk/emulator/emulator -list-avds
