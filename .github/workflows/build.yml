@@ -46,10 +46,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Download platform tools
-        run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install platform-tools
-      - name: Download emu image
-        run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-34;google_apis_playstore;x86_64"
+      - name: Download emu image and platform tools
+        run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools" "system-images;android-34;google_apis_playstore;x86_64"
       - name: Create emu
         run: |
           echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force \
@@ -65,7 +63,7 @@ jobs:
         run: |
           /usr/local/lib/android/sdk/emulator/emulator -list-avds
           echo "Launching emulator for use..."
-          /usr/local/lib/android/sdk/emulator/emulator -avd pixel5api34
+          /usr/local/lib/android/sdk/emulator/emulator -avd pixel5api34 -camera-back none -camera-front none -delay-adb -no-audio -no-boot-anim -no-window
           while ! [[ $(adb devices | awk 'NR>1 && /emulator/ {print $1}' | wc -l | xargs) -eq $i ]]; do sleep 1; done
           echo "Emulator launched"
       - name: Setup emu
