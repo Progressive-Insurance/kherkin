@@ -46,8 +46,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Download emu image and platform tools
-        run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools system-images;android-34;google_apis_playstore;x86_64"
+      - name: Download platform tools
+        run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install platform-tools
+      - name: Download emu image
+        run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-34;google_apis_playstore;x86_64"
       - name: Create emu
         run: |
           echo "no" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force \
