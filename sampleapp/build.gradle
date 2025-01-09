@@ -46,7 +46,7 @@ android {
                 pixel5api34 {
                     device = "Pixel 5"
                     apiLevel = 34
-                    systemImageSource = "google"
+                    systemImageSource = "aosp-atd"
                 }
             }
         }
