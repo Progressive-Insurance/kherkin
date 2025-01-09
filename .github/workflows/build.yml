@@ -54,18 +54,9 @@ jobs:
             --name pixel5api34 \
             --device "pixel_5" \
             --abi "google_apis_playstore/x86_64" \
-            --package "system-images;android-34;google_apis_playstore;x86_64"            
-          echo "List AVDs:"
-          /usr/local/lib/android/sdk/emulator/emulator -list-avds
-          echo "Try #2:"
-          /usr/local/lib/android/sdk/cmdline-tools/latest/bin/avdmanager list avd
+            --package "system-images;android-34;google_apis_playstore;x86_64"
       - name: Launch emu
-        run: |
-          /usr/local/lib/android/sdk/emulator/emulator -list-avds
-          echo "Launching emulator for use..."
-          /usr/local/lib/android/sdk/emulator/emulator -avd pixel5api34 -camera-back none -camera-front none -delay-adb -no-audio -no-boot-anim -no-window
-          while ! [[ $(adb devices | awk 'NR>1 && /emulator/ {print $1}' | wc -l | xargs) -eq $i ]]; do sleep 1; done
-          echo "Emulator launched"
+        run: /usr/local/lib/android/sdk/emulator/emulator -avd pixel5api34 -camera-back none -camera-front none -delay-adb -no-audio -no-boot-anim -no-window -no-metrics &
       - name: Setup emu
         run: ./gradlew sampleapp:pixel5api34Setup
       - name: Run UI Tests
