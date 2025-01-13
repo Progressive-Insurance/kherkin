@@ -19,6 +19,7 @@ import com.progressive.kherkin.common.testcore.Then
 import com.progressive.kherkin.common.testcore.When
 import com.progressive.sampleapp.screens.espresso.ButtonScreen
 import com.progressive.sampleapp.setup.SampleBaseIntegrationTestCase
+import org.junit.Ignore
 import org.junit.Test
 
 class TestWaitSteps : SampleBaseIntegrationTestCase() {
@@ -80,6 +81,7 @@ class TestWaitSteps : SampleBaseIntegrationTestCase() {
         Then.IShouldSee(R.id.textViewDelay)
     }
 
+    @Ignore("aosp-atd image does not have system UI")
     @Test
     fun testDismissShare() {
         Given.IRenderScreen(ButtonScreen())
