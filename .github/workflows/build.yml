@@ -38,7 +38,7 @@ jobs:
       - name: Setup emu
         run: ./gradlew sampleapp:pixel5api34Setup
       - name: Run UI Tests
-        run: ./gradlew sampleapp:pixel5api34DebugAndroidTest
+        run: ./gradlew sampleapp:pixel5api34DebugAndroidTest -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect
 
 # TODO: Publishing to come later
   # build_kherkin:
