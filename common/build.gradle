@@ -6,11 +6,14 @@ buildscript {
 }
 
 plugins {
-    alias libs.plugins.jfrog
     alias libs.plugins.com.android.library
     alias libs.plugins.kotlin.android
-    id 'maven-publish'
-    id 'signing'
+    id 'Kherkin.sharedPublish'
+}
+
+ext {
+    ARTIFACT_ID = "kherkin-common"
+    DESCRIPTION = "A dependency for kherkin-espresso and kherkin-compose"
 }
 
 android {
@@ -36,6 +39,7 @@ android {
             minifyEnabled false
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
@@ -60,29 +64,4 @@ dependencies {
     api libs.kotlin.test
     api libs.androidx.rules
     api libs.kotlin.reflect
-}
-
-ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
-
-signing {
-    required = { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-    sign publishing.publications.aarCommon
-}
-
-publishing {
-    publications {
-        aarCommon(MavenPublication) {
-            groupId 'com.progressive.kherkin'
-            artifactId 'kherkin-common'
-            version = '1.0.0'
-
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-}
-
-artifactoryPublish {
-    publications(publishing.publications.aarCommon)
 }

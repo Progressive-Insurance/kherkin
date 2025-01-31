@@ -1,0 +1,85 @@
+plugins {
+    id 'maven-publish'
+    id 'signing'
+    id 'org.jreleaser'
+}
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+afterEvaluate {
+    publishing {
+        publications {
+            publishLibrary(MavenPublication) {
+                groupId 'com.progressive.kherkin'
+                artifactId ARTIFACT_ID
+                version = '1.0.0-SNAPSHOT'
+
+                afterEvaluate {
+                    from components.release
+                }
+
+                pom {
+                    name = ARTIFACT_ID
+                    description = DESCRIPTION
+                    url = 'https://github.com/Progressive-Insurance/kherkin'
+                    inceptionYear = '2024'
+
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            name = 'Matthew Rockwell'
+                            email = 'smugleafdev@gmail.com'
+                        }
+                    }
+
+                    scm {
+                        connection = 'scm:git:https://github.com/Progressive-Insurance/kherkin.git'
+                        developerConnection = 'scm:git:ssh://github.com/Progressive-Insurance/kherkin.git'
+                        url = 'http://github.com/Progressive-Insurance/kherkin'
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                url = layout.buildDirectory.dir('staging-deploy')
+            }
+        }
+    }
+
+    signing {
+        required = { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+
+        def signingKeyId = findProperty("signingKeyId")
+        def signingKey = findProperty("signingKey")
+        def signingPassword = findProperty("signingPassword")
+        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
+
+        sign publishing.publications.publishLibrary
+    }
+}
+
+jreleaser {
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    stagingRepository('target/staging-deploy')
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,8 @@ pluginManagement {
 }
 
 rootProject.name = 'Kherkin'
+
+includeBuild 'build-conventions'
 include ':sampleapp'
 include ':compose'
 include ':espresso'

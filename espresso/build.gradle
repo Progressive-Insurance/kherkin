@@ -6,11 +6,14 @@ buildscript {
 }
 
 plugins {
-    alias libs.plugins.jfrog
     alias libs.plugins.com.android.library
     alias libs.plugins.kotlin.android
-    id 'maven-publish'
-    id 'signing'
+    id 'Kherkin.sharedPublish'
+}
+
+ext {
+    ARTIFACT_ID = "kherkin-espresso"
+    DESCRIPTION = "An Android UI testing framework for XML layouts that simplifies writing UI tests"
 }
 
 android {
@@ -36,10 +39,12 @@ android {
             minifyEnabled false
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = '17'
     }
@@ -54,29 +59,4 @@ dependencies {
     api(libs.espresso.core)
     api(libs.espresso.contrib)
     api(project(':common'))
-}
-
-ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
-
-signing {
-    required = { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-    sign publishing.publications.aarEspresso
-}
-
-publishing {
-    publications {
-        aarEspresso(MavenPublication) {
-            groupId 'com.progressive.kherkin'
-            artifactId 'kherkin-espresso'
-            version = '1.0.0'
-
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-}
-
-artifactoryPublish {
-    publications(publishing.publications.aarEspresso)
 }
