@@ -1,10 +1,44 @@
 plugins {
+    id 'com.android.library'
     id 'maven-publish'
     id 'signing'
     id 'org.jreleaser'
 }
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+android {
+    compileSdk 34
+    version getVersionName()//project.versionName
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 34
+        versionName getVersionName()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
 
 afterEvaluate {
     publishing {
@@ -49,24 +83,22 @@ afterEvaluate {
 
         repositories {
             maven {
+                def snapshotsRepoUrl = 'https://central.sonatype.com/repository/maven-snapshots/'
+//                url = snapshotsRepoUrl
                 url = layout.buildDirectory.dir('staging-deploy')
+//                url = isReleaseVersion ? layout.buildDirectory.dir('staging-deploy') : snapshotsRepoUrl
+                println "Is release? : $isReleaseVersion"
+//                credentials {
+//                    username = findProperty("mySecureRepositoryUsername")
+//                    password = findProperty("mySecureRepositoryPassword")
+//                }
             }
         }
-    }
-
-    signing {
-        required = { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-
-        def signingKeyId = findProperty("signingKeyId")
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingPassword")
-        useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)
-
-        sign publishing.publications.publishLibrary
     }
 }
 
 jreleaser {
+    gitRootSearch = true
     signing {
         active = 'ALWAYS'
         armored = true
