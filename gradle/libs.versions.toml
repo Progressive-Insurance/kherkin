@@ -13,7 +13,7 @@ espresso = "3.6.1"
 findbugs = "3.0.2"
 fragmentKtx = "1.8.5"
 javaxInject = "1"
-jfrogGradle = "4.24.16"
+jreleaser = "1.16.0"
 junit = "4.13.2"
 kotlin = "2.0.21"
 lifecycleViewmodelKtx = "2.8.7"
@@ -56,5 +56,5 @@ viewbinding = { module = "com.android.databinding:viewbinding", version.ref = "v
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-jfrog = { id = "com.jfrog.artifactory", version.ref = "jfrogGradle" }
+jreleaser = { id = "org.jreleaser", version.ref = "jreleaser" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

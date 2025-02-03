@@ -1,0 +1,120 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+    id 'org.jreleaser'
+}
+
+def getVersionName = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--exact-match', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return null
+    }
+}
+
+android {
+    compileSdk 34
+    version getVersionName()
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 34
+        versionName getVersionName()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            publishLibrary(MavenPublication) {
+                groupId 'com.progressive.kherkin'
+                artifactId ARTIFACT_ID
+
+                afterEvaluate {
+                    from components.release
+                }
+
+                pom {
+                    name = ARTIFACT_ID
+                    description = DESCRIPTION
+                    url = 'https://github.com/Progressive-Insurance/kherkin'
+                    inceptionYear = '2024'
+
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            name = 'Matthew Rockwell'
+                            email = 'smugleafdev@gmail.com'
+                        }
+                    }
+
+                    scm {
+                        connection = 'scm:git:https://github.com/Progressive-Insurance/kherkin.git'
+                        developerConnection = 'scm:git:ssh://github.com/Progressive-Insurance/kherkin.git'
+                        url = 'http://github.com/Progressive-Insurance/kherkin'
+                    }
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                url = layout.buildDirectory.dir('staging-deploy')
+            }
+        }
+    }
+}
+
+jreleaser {
+    gitRootSearch = true
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    stagingRepository('target/staging-deploy')
+                }
+            }
+        }
+    }
+}

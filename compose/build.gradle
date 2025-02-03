@@ -6,56 +6,18 @@ buildscript {
 }
 
 plugins {
-    alias libs.plugins.jfrog
     alias libs.plugins.com.android.library
     alias libs.plugins.kotlin.android
-    id 'maven-publish'
+    id 'Kherkin.sharedPublish'
 }
 
-def getVersionName = { ->
-    try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine 'git', 'describe', '--always'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
-    }
-    catch (ignored) {
-        return null
-    }
+ext {
+    ARTIFACT_ID = "kherkin-compose"
+    DESCRIPTION = "An Android UI testing framework for Jetpack Compose screens that simplifies writing UI tests"
 }
 
 android {
     namespace 'com.progressive.kherkin.compose'
-    compileSdk 34
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
-
-    defaultConfig {
-        minSdk 24
-        targetSdk 34
-        versionName getVersionName()
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = '17'
-    }
 }
 
 dependencies {
@@ -69,22 +31,4 @@ dependencies {
     api(libs.compose.test)
     api(libs.compose.testing)
     api(project(':common'))
-}
-
-publishing {
-    publications {
-        aarCompose(MavenPublication) {
-            groupId 'com.progressive.kherkin'
-            artifactId 'kherkin-compose'
-            version android.defaultConfig.versionName
-
-            afterEvaluate {
-                from components.release
-            }
-        }
-    }
-}
-
-artifactoryPublish {
-    publications(publishing.publications.aarCompose)
 }
