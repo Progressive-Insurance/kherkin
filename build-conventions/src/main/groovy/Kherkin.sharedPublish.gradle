@@ -1,11 +1,25 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'signing'
     id 'org.jreleaser'
 }
 
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+def getVersionName = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git describe --exact-match HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return "my-SNAPSHOT"
+    }
+}
+
 android {
     compileSdk 34
     version getVersionName()//project.versionName
@@ -46,7 +60,6 @@ afterEvaluate {
             publishLibrary(MavenPublication) {
                 groupId 'com.progressive.kherkin'
                 artifactId ARTIFACT_ID
-                version = '1.0.0-SNAPSHOT'
 
                 afterEvaluate {
                     from components.release
