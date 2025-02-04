@@ -55,12 +55,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          server-id: central
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_CENTRAL_TOKEN
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          gpg-passphrase: MAVEN_GPG_PASSPHRASE
-          cache: maven
       - name: Build
         run: ./gradlew publish jreleaserFullRelease
 
