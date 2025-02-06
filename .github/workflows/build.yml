@@ -57,8 +57,10 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build and deploy
-        run: ./gradlew publish jreleaserFullRelease
+      - name: Build
+        run: ./gradlew publish 
+      - name: Deploy
+        run: ./gradlew jreleaserFullRelease
         env:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
           JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}
