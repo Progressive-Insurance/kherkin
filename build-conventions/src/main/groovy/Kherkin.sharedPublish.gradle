@@ -106,7 +106,8 @@ afterEvaluate {
 
         repositories {
             maven {
-                url = layout.buildDirectory.dir('staging-deploy')
+                println(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
+                url = rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString()
             }
         }
     }
@@ -124,7 +125,8 @@ jreleaser {
                 sonatype {
                     active = 'ALWAYS'
                     url = 'https://central.sonatype.com/api/v1/publisher'
-                    stagingRepository('build/staging-deploy')
+                    stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
+                    verifyPom = false
                 }
             }
         }
