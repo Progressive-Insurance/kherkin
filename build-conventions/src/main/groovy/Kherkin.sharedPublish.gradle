@@ -20,7 +20,7 @@ def getVersionName = { ->
 
 android {
     compileSdk 34
-    version getVersionName()
+    version "1.0.0"
 
     publishing {
         singleVariant("release") {
@@ -32,7 +32,7 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 34
-        versionName getVersionName()
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -139,7 +139,7 @@ jreleaser {
             username = 'smugleafdev'
             token = System.getenv('JRELEASER_GITHUB_TOKEN')
             skipTag = true
-            tagName = getVersionName()
+            tagName = "1.0.0"
             changelog {
                 enabled = false
             }
