@@ -55,7 +55,6 @@ android {
 tasks.register('prepareDirs') {
     mustRunAfter clean
     doLast {
-        mkdir "build/staging-deploy"
         mkdir "build/jreleaser"
     }
 }
@@ -106,7 +105,6 @@ afterEvaluate {
 
         repositories {
             maven {
-                println(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
                 url = rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString()
             }
         }
@@ -119,15 +117,34 @@ jreleaser {
         active = 'ALWAYS'
         armored = true
     }
-    deploy {
-        maven {
-            mavenCentral {
-                sonatype {
-                    active = 'ALWAYS'
-                    url = 'https://central.sonatype.com/api/v1/publisher'
-                    stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
-                    verifyPom = false
-                }
+    dryrun = true
+//    deploy {
+//        maven {
+//            mavenCentral {
+//                sonatype {
+//                    active = 'ALWAYS'
+//                    url = 'https://central.sonatype.com/api/v1/publisher'
+//                    stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
+//                    verifyPom = false
+//                }
+//            }
+//        }
+//    }
+
+    release {
+        github {
+            repoOwner = 'Progressive-Insurance'
+            name = 'kherkin'
+            branch = 'main'
+            username = 'smugleafdev'
+            token = System.getenv('JRELEASER_GITHUB_TOKEN')
+            skipTag = true
+            tagName = getVersionName()
+            changelog {
+                enabled = false
+            }
+            releaseNotes {
+                enabled = true
             }
         }
     }
