@@ -10,11 +10,12 @@ Kherkin is written for both XML layouts and Jetpack Compose activities. It offer
 
 (For a working example, check out the [sample app](sampleapp/src/main))
 
-The first step is to add the Kherkin library or libraries to your project.
+Add the Kherkin library or libraries to your project.
 
+**Gradle:**
 ```gradle
-androidTestImplementation "com.progressive.kherkin:kherkin-espresso:<version>"
-androidTestImplementation "com.progressive.kherkin:kherkin-compose:<version>"
+androidTestImplementation "com.progressive.kherkin:kherkin-espresso:1.0.0"
+androidTestImplementation "com.progressive.kherkin:kherkin-compose:1.0.0"
 ```
 
 Extend the BaseIntegrationTestCase for setup and tear down. See [BaseIntegrationTestCase](#baseintegrationtestcase) below for details.
