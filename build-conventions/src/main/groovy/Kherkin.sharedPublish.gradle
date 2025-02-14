@@ -55,7 +55,6 @@ android {
 tasks.register('prepareDirs') {
     mustRunAfter clean
     doLast {
-        mkdir "build/staging-deploy"
         mkdir "build/jreleaser"
     }
 }
@@ -106,7 +105,6 @@ afterEvaluate {
 
         repositories {
             maven {
-                println(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
                 url = rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString()
             }
         }
@@ -128,6 +126,23 @@ jreleaser {
                     stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
                     verifyPom = false
                 }
+            }
+        }
+    }
+
+    release {
+        github {
+            repoOwner = 'Progressive-Insurance'
+            name = 'kherkin'
+            branch = 'main'
+            token = System.getenv('JRELEASER_GITHUB_TOKEN')
+            skipTag = true
+            tagName = getVersionName()
+            changelog {
+                enabled = false
+            }
+            releaseNotes {
+                enabled = true
             }
         }
     }
