@@ -5,17 +5,16 @@ plugins {
 }
 
 def getVersionName = { ->
-    try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine 'git', 'describe', '--tags', '--exact-match', 'HEAD'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags', 'HEAD'
+        standardOutput = stdout
     }
-    catch (ignored) {
-        return null
+    def describe = stdout.toString().trim()
+    if (describe.contains("-")) {
+        describe += "-SNAPSHOT"
     }
+    return describe
 }
 
 android {
@@ -121,10 +120,20 @@ jreleaser {
         maven {
             mavenCentral {
                 sonatype {
-                    active = 'ALWAYS'
+                    active = 'RELEASE'
                     url = 'https://central.sonatype.com/api/v1/publisher'
                     stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
                     verifyPom = false
+                }
+            }
+            nexus2 {
+                'maven-central' {
+                    active = 'SNAPSHOT'
+                    url = 'https://s01.oss.sonatype.org/service/local'
+                    snapshotUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+                    closeRepository = true
+                    releaseRepository = true
+                    stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
                 }
             }
         }
