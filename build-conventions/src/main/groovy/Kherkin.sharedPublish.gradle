@@ -5,16 +5,20 @@ plugins {
 }
 
 def getVersionName = { ->
-    def stdout = new ByteArrayOutputStream()
-    exec {
-        commandLine 'git', 'describe', '--tags', 'HEAD'
-        standardOutput = stdout
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags', 'HEAD'
+            standardOutput = stdout
+        }
+        def describe = stdout.toString().trim()
+        if (describe.contains("-")) {
+            describe += "-SNAPSHOT"
+        }
+        return describe
+    } catch (Exception ignored) {
+        return "1.0.0"
     }
-    def describe = stdout.toString().trim()
-    if (describe.contains("-")) {
-        describe += "-SNAPSHOT"
-    }
-    return describe
 }
 
 android {
