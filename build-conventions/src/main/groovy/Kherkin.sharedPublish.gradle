@@ -137,6 +137,7 @@ jreleaser {
                     url = 'https://s01.oss.sonatype.org/service/local'
                     snapshotUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
                     stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
+                    verifyPom = false
                 }
             }
         }
