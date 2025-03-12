@@ -138,6 +138,7 @@ jreleaser {
                     snapshotUrl = 'https://central.sonatype.com/repository/maven-snapshots/'
                     stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
                     verifyPom = false
+                    authorization = 'BASIC'
                 }
             }
         }
