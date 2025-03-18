@@ -64,7 +64,7 @@ jobs:
           if [ ${{ github.ref }} =~ 'refs/tags' ]; then
             ./gradlew jreleaserFullRelease
           else
-            ./gradlew jreleaserDeploy
+            ./gradlew common:jreleaserDeploy
           fi
         env:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
