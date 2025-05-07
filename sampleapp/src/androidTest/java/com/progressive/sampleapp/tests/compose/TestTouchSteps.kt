@@ -22,9 +22,6 @@ import org.junit.Test
 
 class TestTouchSteps : SampleBaseIntegrationTestCase() {
 
-    @get:Rule
-    val composeTestRule = createEmptyComposeRule()
-
     @Test
     fun testTouchText() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)

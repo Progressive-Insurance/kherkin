@@ -18,9 +18,6 @@ import org.junit.Test
 
 class TestTextFieldSteps : SampleBaseIntegrationTestCase() {
 
-    @get:Rule
-    val composeTestRule = createEmptyComposeRule()
-
     @Test
     fun testEnterTextIntoField() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)

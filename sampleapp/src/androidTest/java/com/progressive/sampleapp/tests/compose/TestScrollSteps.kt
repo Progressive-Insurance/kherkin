@@ -15,9 +15,6 @@ import org.junit.Test
 
 class TestScrollSteps : SampleBaseIntegrationTestCase() {
 
-    @get:Rule
-    val composeTestRule = createEmptyComposeRule()
-
     @Test
     fun testScrollOnNode() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)

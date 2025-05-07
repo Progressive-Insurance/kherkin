@@ -21,9 +21,6 @@ import org.junit.Test
 
 class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
 
-    @get:Rule
-    val composeTestRule = createEmptyComposeRule()
-
     @Test
     fun testHybridTestCanNavigateFromXmlScreenToComposeScreen() {
         Given.IRenderScreen(MainScreen())
