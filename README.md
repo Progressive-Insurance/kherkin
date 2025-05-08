@@ -23,6 +23,9 @@ Extend the BaseIntegrationTestCase for setup and tear down. See [BaseIntegration
 ```kotlin
 open class SampleBaseIntegrationTestCase : BaseIntegrationTestCase() {
 
+    @get:Rule
+    val composeTestRule = createEmptyComposeRule()
+
     @Before
     override fun setUp() {
         super.setUp()
@@ -93,9 +96,6 @@ class TestMain : SampleBaseIntegrationTestCase() {
 Jetpack Compose activity:
 ```kotlin
 class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
-    @get:Rule
-    val composeTestRule = createEmptyComposeRule()
-
     @Test
     fun testComposeScreenDisplays() {
         Given.IRenderScreen(ComposeScreen(), composeTestRule)
