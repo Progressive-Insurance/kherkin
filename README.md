@@ -22,7 +22,7 @@ Extend the BaseIntegrationTestCase for setup and tear down. See [BaseIntegration
 
 ```kotlin
 open class SampleBaseIntegrationTestCase : BaseIntegrationTestCase() {
-    
+
     @get:Rule
     val composeTestRule = createEmptyComposeRule()
     
