@@ -1,6 +1,9 @@
 package com.progressive.sampleapp.tests.compose
 
-import androidx.compose.ui.test.junit4.createEmptyComposeRule
+import com.progressive.kherkin.common.testcore.And
+import com.progressive.kherkin.common.testcore.Given
+import com.progressive.kherkin.common.testcore.Then
+import com.progressive.kherkin.common.testcore.When
 import com.progressive.kherkin.compose.steps.actions.ITouchNode
 import com.progressive.kherkin.compose.steps.actions.ITouchNodeWithText
 import com.progressive.kherkin.compose.steps.actions.ITouchText
@@ -11,13 +14,8 @@ import com.progressive.kherkin.compose.steps.assertion.IShouldSeeNodeIsClickable
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeNodeWithText
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeNodeWithTextIsClickable
 import com.progressive.kherkin.compose.steps.setup.IRenderScreen
-import com.progressive.kherkin.common.testcore.And
-import com.progressive.kherkin.common.testcore.Given
-import com.progressive.kherkin.common.testcore.Then
-import com.progressive.kherkin.common.testcore.When
 import com.progressive.sampleapp.screens.compose.BasicComposeScreen
 import com.progressive.sampleapp.setup.SampleBaseIntegrationTestCase
-import org.junit.Rule
 import org.junit.Test
 
 class TestTouchSteps : SampleBaseIntegrationTestCase() {
