@@ -1,9 +1,9 @@
 package com.progressive.kherkin.common
 
-import com.progressive.kherkin.common.testcore.Navigable
-import com.progressive.kherkin.common.testcore.PathSegment
+import com.progressive.kherkin.espresso.custom.Navigable
+import com.progressive.kherkin.espresso.custom.PathSegment
 import com.progressive.kherkin.common.testcore.PreconditionsData
-import com.progressive.kherkin.common.testcore.StepNavigator
+import com.progressive.kherkin.espresso.custom.StepNavigator
 import com.progressive.kherkin.common.testcore.TestLogger
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -13,11 +13,11 @@ import org.junit.Test
 
 class StepNavigatorTest {
 
-    private lateinit var stepNavigator: StepNavigator
+    private lateinit var stepNavigator: com.progressive.kherkin.espresso.custom.StepNavigator
 
     @Before
     fun setup() {
-        stepNavigator = StepNavigator(TestLogger)
+        stepNavigator = com.progressive.kherkin.espresso.custom.StepNavigator(TestLogger)
     }
 
     @After
@@ -98,17 +98,17 @@ class StepNavigatorTest {
         assertEquals(second.end, FeedScreen)
     }
 
-    private object Login : Navigable {
-        override fun pathsToScreen(): List<PathSegment> = emptyList()
+    private object Login : com.progressive.kherkin.espresso.custom.Navigable {
+        override fun pathsToScreen(): List<com.progressive.kherkin.espresso.custom.PathSegment> = emptyList()
 
         override fun toString(): String {
             return javaClass.simpleName
         }
     }
 
-    private object Welcome : Navigable {
-        override fun pathsToScreen(): List<PathSegment> {
-            return listOf(PathSegment(
+    private object Welcome : com.progressive.kherkin.espresso.custom.Navigable {
+        override fun pathsToScreen(): List<com.progressive.kherkin.espresso.custom.PathSegment> {
+            return listOf(com.progressive.kherkin.espresso.custom.PathSegment(
                 start = Login,
                 end = this,
                 step = {}
@@ -120,15 +120,15 @@ class StepNavigatorTest {
         }
     }
 
-    private object Hub : Navigable {
-        override fun pathsToScreen(): List<PathSegment> {
+    private object Hub : com.progressive.kherkin.espresso.custom.Navigable {
+        override fun pathsToScreen(): List<com.progressive.kherkin.espresso.custom.PathSegment> {
             return listOf(
-                PathSegment(
+                com.progressive.kherkin.espresso.custom.PathSegment(
                     start = Welcome,
                     end = this,
                     step = {}
                 ),
-                PathSegment(
+                com.progressive.kherkin.espresso.custom.PathSegment(
                     start = Login,
                     end = this,
                     step = {},
@@ -142,10 +142,10 @@ class StepNavigatorTest {
         }
     }
 
-    private object Summary : Navigable {
-        override fun pathsToScreen(): List<PathSegment> {
+    private object Summary : com.progressive.kherkin.espresso.custom.Navigable {
+        override fun pathsToScreen(): List<com.progressive.kherkin.espresso.custom.PathSegment> {
             return listOf(
-                PathSegment(
+                com.progressive.kherkin.espresso.custom.PathSegment(
                     start = Hub,
                     end = this,
                     step = {}
@@ -158,15 +158,15 @@ class StepNavigatorTest {
         }
     }
 
-    private object FeedScreen : Navigable {
-        override fun pathsToScreen(): List<PathSegment> {
+    private object FeedScreen : com.progressive.kherkin.espresso.custom.Navigable {
+        override fun pathsToScreen(): List<com.progressive.kherkin.espresso.custom.PathSegment> {
             return listOf(
-                PathSegment(
+                com.progressive.kherkin.espresso.custom.PathSegment(
                     start = Hub,
                     end = this,
                     step = {}
                 ),
-                PathSegment(
+                com.progressive.kherkin.espresso.custom.PathSegment(
                     start = Login,
                     end = this,
                     step = {},
@@ -181,10 +181,10 @@ class StepNavigatorTest {
 
     }
 
-    private object DeadEnd : Navigable {
-        override fun pathsToScreen(): List<PathSegment> {
+    private object DeadEnd : com.progressive.kherkin.espresso.custom.Navigable {
+        override fun pathsToScreen(): List<com.progressive.kherkin.espresso.custom.PathSegment> {
             return listOf(
-                PathSegment(
+                com.progressive.kherkin.espresso.custom.PathSegment(
                     start = Hub,
                     end = Login,
                     step = {})

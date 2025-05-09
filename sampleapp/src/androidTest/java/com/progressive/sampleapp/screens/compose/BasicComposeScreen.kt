@@ -4,8 +4,8 @@ import android.app.Activity
 import androidx.test.core.app.ActivityScenario
 import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.screen.Trait
-import com.progressive.kherkin.common.testcore.Navigable
-import com.progressive.kherkin.common.testcore.PathSegment
+import com.progressive.kherkin.espresso.testcore.Navigable
+import com.progressive.kherkin.espresso.testcore.PathSegment
 import com.progressive.sampleapp.activities.compose.BasicComposeActivity
 
 class BasicComposeScreen : Screen(), Navigable {
