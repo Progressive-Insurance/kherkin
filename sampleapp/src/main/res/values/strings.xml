@@ -103,6 +103,7 @@
 <!--  BasicComposeActivity  -->
     <string name="hello">Hello user!</string>
     <string name="basic_button">Click Me</string>
+    <string name="nav_button">Navigate</string>
     <string name="basic_button_clicked">Button Clicked</string>
     <string name="hide_button">Hide Me</string>
     <string name="label">Label</string>

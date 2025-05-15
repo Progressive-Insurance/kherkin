@@ -10,7 +10,7 @@ interface Logger {
     fun info(tag: String, message: String)
 }
 
-internal class AndroidLogger : Logger {
+    class AndroidLogger : Logger {
     override fun debug(tag: String, message: String) {
         Log.d(tag, message)
     }
@@ -20,7 +20,7 @@ internal class AndroidLogger : Logger {
     }
 }
 
-internal object TestLogger: Logger {
+    object TestLogger: Logger {
     override fun debug(tag: String, message: String) {
         println("$tag: $message")
     }
