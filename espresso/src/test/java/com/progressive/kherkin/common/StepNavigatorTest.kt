@@ -2,9 +2,9 @@ package com.progressive.kherkin.common
 
 import com.progressive.kherkin.common.testcore.PreconditionsData
 import com.progressive.kherkin.common.testcore.TestLogger
-import com.progressive.kherkin.espresso.custom.Navigable
-import com.progressive.kherkin.espresso.custom.PathSegment
-import com.progressive.kherkin.espresso.custom.StepNavigator
+import com.progressive.kherkin.espresso.testcore.Navigable
+import com.progressive.kherkin.espresso.testcore.PathSegment
+import com.progressive.kherkin.espresso.testcore.StepNavigator
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

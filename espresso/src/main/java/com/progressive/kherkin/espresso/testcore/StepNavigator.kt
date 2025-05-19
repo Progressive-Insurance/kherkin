@@ -1,4 +1,4 @@
-package com.progressive.kherkin.espresso.custom
+package com.progressive.kherkin.espresso.testcore
 
 import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.testcore.AndroidLogger

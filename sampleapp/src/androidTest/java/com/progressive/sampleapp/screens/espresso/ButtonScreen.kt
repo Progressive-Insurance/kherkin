@@ -5,8 +5,8 @@ import androidx.test.core.app.ActivityScenario
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.screen.Trait
-import com.progressive.kherkin.espresso.custom.Navigable
-import com.progressive.kherkin.espresso.custom.PathSegment
+import com.progressive.kherkin.espresso.testcore.Navigable
+import com.progressive.kherkin.espresso.testcore.PathSegment
 import com.progressive.sampleapp.activities.xml.ButtonActivity
 
 class ButtonScreen : Screen(), Navigable {
