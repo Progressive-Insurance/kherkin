@@ -1,6 +1,5 @@
 package com.progressive.kherkin.common.screen
 
-import com.progressive.kherkin.common.testcore.StepNavigator
 
 /**
  * A simple interface for starting an activity and getting the start screen for navigation.

@@ -6,8 +6,8 @@ import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.common.steps.setup.IAmOnTheScreen
 import com.progressive.kherkin.common.testcore.Gherkin
-import com.progressive.kherkin.common.testcore.Navigable
-import com.progressive.kherkin.common.testcore.StepNavigator
+import com.progressive.kherkin.espresso.custom.Navigable
+import com.progressive.kherkin.espresso.custom.StepNavigator
 
 private val integrationSetup: IntegrationSetupInterface get() = BaseIntegrationComponentHolder.component.integrationSetup()
 

@@ -7,8 +7,8 @@ import com.progressive.kherkin.common.screen.IntegrationSetupInterface
 import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.steps.setup.IAmOnTheScreen
 import com.progressive.kherkin.common.testcore.Gherkin
-import com.progressive.kherkin.common.testcore.Navigable
-import com.progressive.kherkin.common.testcore.StepNavigator
+import com.progressive.kherkin.compose.steps.testcore.ComposeNavigable
+import com.progressive.kherkin.compose.steps.testcore.ComposeStepNavigator
 
 private val integrationSetup: IntegrationSetupInterface get() = BaseIntegrationComponentHolder.component.integrationSetup()
 
@@ -26,8 +26,9 @@ fun Gherkin.IRenderScreen(screen: Screen, composeTestRule: ComposeTestRule) {
  * to the [Navigable] [toScreen] via the pathsToScreen() methods in each [Navigable] in the path.
  * Once the last screen is rendered, [IWaitToSeeScreen] is called to verify the [screen] renders properly.
  */
-fun Gherkin.INavigateFromTo(fromScreen: Navigable, toScreen: Navigable, composeTestRule: ComposeTestRule) {
-    val path = StepNavigator().findPathToScreen(fromScreen, toScreen)
+fun Gherkin.INavigateFromTo(fromScreen: ComposeNavigable, toScreen: ComposeNavigable, composeTestRule: ComposeTestRule) {
+    val path = ComposeStepNavigator()
+        .findPathToScreen(fromScreen, toScreen, composeTestRule)
     path.forEach { it.step() }
     IWaitToSeeScreen(toScreen as Screen, composeTestRule)
 }
@@ -37,9 +38,9 @@ fun Gherkin.INavigateFromTo(fromScreen: Navigable, toScreen: Navigable, composeT
  * to the [Navigable] [screen] via the pathsToScreen() methods in each [Navigable] in the path.
  * Once the last screen is rendered, [IWaitToSeeScreen] is called to verify the [screen] renders properly.
  */
-fun Gherkin.INavigateToScreen(screen: Navigable, composeTestRule: ComposeTestRule) {
-    val path = StepNavigator()
-        .findPathToScreen(integrationSetup.getStartScreen() as Navigable, screen)
+fun Gherkin.INavigateToScreen(screen:  ComposeNavigable, composeTestRule: ComposeTestRule) {
+    val path = ComposeStepNavigator()
+        .findPathToScreen(integrationSetup.getStartScreen() as ComposeNavigable, screen, composeTestRule)
     path.forEach { it.step() }
     IWaitToSeeScreen(screen as Screen, composeTestRule)
 }

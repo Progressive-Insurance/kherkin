@@ -1,4 +1,4 @@
-package com.progressive.kherkin.common.testcore
+package com.progressive.kherkin.espresso.custom
 
 import com.progressive.kherkin.common.screen.Screen
 

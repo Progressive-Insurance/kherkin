@@ -4,12 +4,11 @@ import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.Given
 import com.progressive.kherkin.common.testcore.Then
 import com.progressive.kherkin.common.testcore.When
-import com.progressive.kherkin.compose.steps.actions.INavigateBetweenScreensWithCompose
-import com.progressive.kherkin.compose.steps.actions.INavigateToScreenWithCompose
 import com.progressive.kherkin.compose.steps.actions.ITouchText
 import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeText
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeTextIsClickable
+import com.progressive.kherkin.compose.steps.setup.INavigateToScreen
 import com.progressive.kherkin.compose.steps.setup.IRenderScreen
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
@@ -64,16 +63,8 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
     @Test
     fun testNavigatesToComposeScreen() {
         Given.IRenderScreen(MainScreen())
-        And.INavigateToScreenWithCompose(BasicComposeScreen(), composeTestRule)
+        And.INavigateToScreen(BasicComposeScreen(), composeTestRule)
         When.ITouchText("Navigate", composeTestRule)
-        Then.IWaitToSeeScreen(ComposeFinalScreen())
-    }
-
-    @Test
-    fun testNavigatesBetweenComposeScreens() {
-        Given.IRenderScreen(MainScreen())
-        And.INavigateToScreenWithCompose(BasicComposeScreen(), composeTestRule)
-        And.INavigateBetweenScreensWithCompose(BasicComposeScreen(), ComposeFinalScreen(), composeTestRule)
         Then.IWaitToSeeScreen(ComposeFinalScreen())
     }
 }
