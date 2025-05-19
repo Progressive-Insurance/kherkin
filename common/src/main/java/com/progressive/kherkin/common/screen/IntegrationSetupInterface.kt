@@ -1,10 +1,9 @@
 package com.progressive.kherkin.common.screen
 
-
 /**
  * A simple interface for starting an activity and getting the start screen for navigation.
  * [startActivity] allows [Screen] to launch any activity through [Screen.myCurrentScreen].
- * [getStartScreen] is necessary for [StepNavigator] to find a path to a screen.
+ * [getStartScreen] is necessary for StepNavigator to find a path to a screen.
  */
 interface IntegrationSetupInterface {
     fun startActivity()
