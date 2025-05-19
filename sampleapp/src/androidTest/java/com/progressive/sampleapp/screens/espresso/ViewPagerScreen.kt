@@ -10,8 +10,8 @@ import com.progressive.kherkin.common.screen.Trait
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.common.testcore.And
-import com.progressive.kherkin.common.testcore.Navigable
-import com.progressive.kherkin.common.testcore.PathSegment
+import com.progressive.kherkin.espresso.testcore.Navigable
+import com.progressive.kherkin.espresso.testcore.PathSegment
 import com.progressive.kherkin.common.testcore.PreconditionsData
 import com.progressive.kherkin.common.testcore.When
 import com.progressive.sampleapp.activities.xml.ViewPagerActivity
