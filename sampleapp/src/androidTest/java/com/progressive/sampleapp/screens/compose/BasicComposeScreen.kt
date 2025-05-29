@@ -5,6 +5,7 @@ import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.test.core.app.ActivityScenario
 import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.screen.Trait
+import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.Then
 import com.progressive.kherkin.common.testcore.When
 import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
@@ -27,8 +28,8 @@ class BasicComposeScreen : Screen(), ComposeNavigable {
 
     override fun pathsToScreen(composeTestRule: ComposeTestRule): List<ComposePathSegment> {
         return listOf(
-            ComposePathSegment(MainScreen(), this, {
-                When.ITouchButton(R.id.buttonNavCompose)
+            ComposePathSegment(start = MainScreen(), this, step = {
+                And.ITouchButton(R.id.buttonNavCompose)
                 Then.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
             })
         )

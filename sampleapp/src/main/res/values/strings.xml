@@ -77,6 +77,7 @@
 
 <!--  FinalActivity  -->
     <string name="button_return">Return to Main</string>
+    <string name="button_ComposeReturn">Return to Compose Screen</string>
     <string name="text_view_more">More lies below</string>
     <string name="text_view_bottom">Nearly the bottom</string>
     <string name="text_view_bottom_description">Nearly the bottom</string>

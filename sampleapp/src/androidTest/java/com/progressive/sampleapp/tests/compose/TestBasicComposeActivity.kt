@@ -15,7 +15,6 @@ import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.espresso.steps.setup.IRenderScreen
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.sampleapp.screens.compose.BasicComposeScreen
-import com.progressive.sampleapp.screens.compose.ComposeFinalScreen
 import com.progressive.sampleapp.screens.espresso.FinalScreen
 import com.progressive.sampleapp.screens.espresso.MainScreen
 import com.progressive.sampleapp.setup.SampleBaseIntegrationTestCase
@@ -62,9 +61,11 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
 
     @Test
     fun testNavigatesToComposeScreen() {
-        Given.IRenderScreen(MainScreen())
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        And.INavigateToScreen(FinalScreen(), composeTestRule)
+        And.ITouchText("Navigate", composeTestRule)
         And.INavigateToScreen(BasicComposeScreen(), composeTestRule)
-        When.ITouchText("Navigate", composeTestRule)
-        Then.IWaitToSeeScreen(ComposeFinalScreen())
+        When.ITouchText("Return to Compose Screen", composeTestRule)
+        Then.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
     }
 }
