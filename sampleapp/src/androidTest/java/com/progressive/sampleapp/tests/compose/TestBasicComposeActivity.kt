@@ -8,11 +8,14 @@ import com.progressive.kherkin.compose.steps.actions.ITouchText
 import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeText
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeTextIsClickable
+import com.progressive.kherkin.compose.steps.setup.INavigateToScreen
 import com.progressive.kherkin.compose.steps.setup.IRenderScreen
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
+import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.espresso.steps.setup.IRenderScreen
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.sampleapp.screens.compose.BasicComposeScreen
+import com.progressive.sampleapp.screens.espresso.FinalScreen
 import com.progressive.sampleapp.screens.espresso.MainScreen
 import com.progressive.sampleapp.setup.SampleBaseIntegrationTestCase
 import org.junit.Test
@@ -46,6 +49,23 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
     fun testXmlNavigatesToComposeScreen() {
         Given.IRenderScreen(MainScreen())
         When.ITouchButton(R.id.buttonNavCompose)
+        Then.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
+    }
+
+    @Test
+    fun testComposeNavigatesToXmlScreen() {
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        And.ITouchText("Navigate", composeTestRule)
+        Then.IWaitToSeeScreen(FinalScreen())
+    }
+
+    @Test
+    fun testNavigatesToComposeScreen() {
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        And.INavigateToScreen(FinalScreen(), composeTestRule)
+        And.ITouchText("Navigate", composeTestRule)
+        And.INavigateToScreen(BasicComposeScreen(), composeTestRule)
+        When.ITouchText("Return to Compose Screen", composeTestRule)
         Then.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
     }
 }

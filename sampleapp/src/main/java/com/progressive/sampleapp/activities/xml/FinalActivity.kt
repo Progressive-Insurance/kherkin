@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.sampleapp.databinding.ActivityFinalBinding
+import com.progressive.sampleapp.activities.compose.BasicComposeActivity
 
 class FinalActivity : AppCompatActivity(R.layout.activity_final) {
 
@@ -24,6 +25,12 @@ class FinalActivity : AppCompatActivity(R.layout.activity_final) {
     @Suppress("UNUSED_PARAMETER")
     fun navigateToMain(v: View) {
         intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    fun navigateToCompose(v: View) {
+        intent = Intent(this, BasicComposeActivity::class.java)
         startActivity(intent)
     }
 

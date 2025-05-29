@@ -25,6 +25,7 @@ dependencies {
     implementation composeBom
     androidTestImplementation composeBom
     implementation libs.androidx.appcompat
+    implementation libs.javax.inject
     implementation libs.material
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
