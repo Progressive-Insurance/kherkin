@@ -1,5 +1,6 @@
 package com.progressive.sampleapp.activities.compose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,10 +16,14 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
@@ -34,6 +40,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.progressive.kherkin.sampleapp.R
+import com.progressive.sampleapp.activities.xml.TextFieldActivity
 
 class BasicComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,29 +50,48 @@ class BasicComposeActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background
             ) {
-                SetupContent()
+                SmallTopAppBar()
             }
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun SetupContent() {
-    Column {
-        var buttonVisibility by remember { mutableStateOf(true) }
+fun SmallTopAppBar() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("Small Top App Bar")
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer
+                )
+            )
+        },
+    ) { innerPadding ->
+        Column (
+            modifier = Modifier
+                .padding(innerPadding)
+        ) {
+            var buttonVisibility by remember { mutableStateOf(true) }
 
-        Greeting()
-        BasicButton()
-        HidingButton(buttonIsVisible = buttonVisibility, changeValue = { buttonVisibility = it } )
-        TextField()
-        TextFieldPrefilled()
-        ScrollBoxes()
+            Greeting()
+            BasicButton()
+            HidingButton(buttonIsVisible = buttonVisibility, changeValue = { buttonVisibility = it } )
+            TextField()
+            TextFieldPrefilled()
+            ScrollBoxes()
+            NavigateButton()
+        }
     }
 }
 
 @Composable
 private fun Greeting() {
-    Text(text = stringResource(id = R.string.hello))
+    Text(text = stringResource(id = R.string.hello),
+        modifier = Modifier.padding(10.dp))
 }
 
 @Composable
@@ -79,7 +105,7 @@ private fun BasicButton() {
         contentPadding = PaddingValues(all = 20.dp),
         elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),
         modifier = Modifier
-            .padding(20.dp)
+            .padding(10.dp)
             .testTag("Compose Button")
     ) {
         Text(text)
@@ -97,7 +123,7 @@ private fun HidingButton(buttonIsVisible: Boolean, changeValue: (Boolean) -> Uni
             contentPadding = PaddingValues(all = 20.dp),
             elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),
             modifier = Modifier
-                .padding(20.dp)
+                .padding(10.dp)
                 .testTag("Hidden Button")
         ) {
             Text(text = hiddenButtonText)
@@ -124,7 +150,9 @@ private fun TextField() {
                 focusManager.clearFocus()
             }
         ),
-        modifier = Modifier.testTag("Text Field")
+        modifier = Modifier
+            .padding(10.dp)
+            .testTag("Text Field")
     )
 }
 
@@ -148,7 +176,9 @@ private fun TextFieldPrefilled() {
                 focusManager.clearFocus()
             }
         ),
-        modifier = Modifier.testTag("Prefilled Field")
+        modifier = Modifier
+            .padding(10.dp)
+            .testTag("Prefilled Field")
     )
 }
 
@@ -158,6 +188,7 @@ private fun ScrollBoxes() {
         modifier = Modifier
             .background(Color.LightGray)
             .size(100.dp)
+            .padding(20.dp)
             .verticalScroll(rememberScrollState())
             .testTag("Scroll Box")
     ) {
@@ -171,8 +202,27 @@ private fun ScrollBoxes() {
     }
 }
 
+@Composable
+private fun NavigateButton() {
+    val buttonText = stringResource(id = R.string.button_navigate)
+    val context = LocalContext.current
+
+    Button(
+        onClick = {
+            context.startActivity(Intent(context, TextFieldActivity::class.java))
+        },
+        contentPadding = PaddingValues(all = 20.dp),
+        elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),
+        modifier = Modifier
+            .padding(10.dp)
+            .testTag("Navigate Compose Button")
+    ) {
+        Text(buttonText)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    SetupContent()
+    SmallTopAppBar()
 }

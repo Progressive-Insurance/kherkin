@@ -23,6 +23,8 @@
         <activity android:name="com.progressive.sampleapp.activities.xml.TextFieldActivity"/>
         <activity android:name="com.progressive.sampleapp.activities.xml.WebViewActivity"/>
         <activity android:name="com.progressive.sampleapp.activities.compose.BasicComposeActivity"/>
+        <activity android:name="com.progressive.sampleapp.activities.compose.SecondComposeActivity"/>
+        <activity android:name="com.progressive.sampleapp.activities.compose.FinalComposeActivity"/>
     </application>
 
 </manifest>
