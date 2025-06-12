@@ -215,7 +215,7 @@ private fun NavigateButton() {
         elevation = ButtonDefaults.buttonElevation(defaultElevation = 5.dp),
         modifier = Modifier
             .padding(10.dp)
-            .testTag("Compose Button")
+            .testTag("Navigate Compose Button")
     ) {
         Text(buttonText)
     }
