@@ -1,5 +1,6 @@
 package com.progressive.sampleapp.activities.xml
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,10 +8,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.sampleapp.databinding.ActivityTextFieldBinding
+import com.progressive.sampleapp.activities.compose.SecondComposeActivity
 
 class TextFieldActivity : AppCompatActivity(R.layout.activity_text_field) {
 
     private lateinit var binding: ActivityTextFieldBinding
+
+    @Suppress("UNUSED_PARAMETER")
+    fun navigateToSecondComposeFromTextField(v: View) {
+        intent = Intent(this, SecondComposeActivity::class.java)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

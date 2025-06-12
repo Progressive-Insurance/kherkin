@@ -101,6 +101,7 @@
     <string name="web_url">https://developer.android.com/</string>
 
 <!--  BasicComposeActivity  -->
+    <string name="compose_title">Basic Compose Activity</string>
     <string name="hello">Hello user!</string>
     <string name="basic_button">Click Me</string>
     <string name="basic_button_clicked">Button Clicked</string>
@@ -108,4 +109,10 @@
     <string name="label">Label</string>
     <string name="placeholder">Placeholder</string>
     <string name="prefilled_text_field">Default text</string>
+
+<!--  SecondComposeActivity  -->
+    <string name="second_title">Second Compose Activity</string>
+
+<!--  FinalComposeActivity  -->
+    <string name="final_title">Final Compose Activity</string>
 </resources>
