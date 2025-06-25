@@ -9,36 +9,30 @@ import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.Then
 import com.progressive.kherkin.common.testcore.When
 import com.progressive.kherkin.compose.steps.actions.ITouchText
+import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.compose.steps.testcore.ComposeNavigable
 import com.progressive.kherkin.compose.steps.testcore.ComposePathSegment
-import com.progressive.kherkin.espresso.steps.actions.ITouchButton
-import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
-import com.progressive.kherkin.espresso.testcore.Navigable
-import com.progressive.kherkin.espresso.testcore.PathSegment
-import com.progressive.kherkin.sampleapp.R
-import com.progressive.sampleapp.activities.compose.BasicComposeActivity
-import com.progressive.sampleapp.activities.xml.MainActivity
-import com.progressive.sampleapp.screens.espresso.MainScreen
+import com.progressive.sampleapp.activities.compose.FinalComposeActivity
 
-class BasicComposeScreen : Screen(), ComposeNavigable {
+class FinalComposeScreen : Screen(), ComposeNavigable {
 
-    override lateinit var activityScenario: ActivityScenario<BasicComposeActivity>
-    override val trait: Trait = Trait("Hello user!")
-    override fun screenActivityClass(): Class<out Activity> = BasicComposeActivity::class.java
+    override lateinit var activityScenario: ActivityScenario<FinalComposeActivity>
+    override val trait: Trait = Trait("Final Compose Activity")
+    override fun screenActivityClass(): Class<out Activity> = FinalComposeActivity::class.java
 
     override fun startMyActivity() {
-        activityScenario = ActivityScenario.launch(BasicComposeActivity::class.java)
+        activityScenario = ActivityScenario.launch(FinalComposeActivity::class.java)
     }
 
     override fun pathsToScreen(composeTestRule: ComposeTestRule): List<ComposePathSegment> {
         val pathSegments = mutableListOf<ComposePathSegment>()
         pathSegments.add(
             ComposePathSegment(
-                start = MainScreen(),
+                start = SecondComposeScreen(),
                 end = this,
                 step = {
-                    And.IWaitToSeeScreen(MainScreen())
-                    Then.ITouchButton(R.id.buttonNavCompose)
+                    And.IWaitToSeeScreen(SecondComposeScreen(), composeTestRule)
+                    Then.ITouchText("Navigate to Final Activity", composeTestRule)
                 }
             )
         )

@@ -3,14 +3,14 @@ package com.progressive.kherkin.common.testcore
 import android.util.Log
 
 /**
- * Similar to [IntegrationTestLogger], this is a simple wrapper for use by the [StepNavigator].
+ * Similar to [IntegrationTestLogger], this is a simple wrapper for use by the StepNavigator.
  */
 interface Logger {
     fun debug(tag: String, message: String)
     fun info(tag: String, message: String)
 }
 
-internal class AndroidLogger : Logger {
+class AndroidLogger : Logger {
     override fun debug(tag: String, message: String) {
         Log.d(tag, message)
     }

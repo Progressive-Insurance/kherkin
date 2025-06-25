@@ -6,8 +6,8 @@ import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.common.steps.setup.IAmOnTheScreen
 import com.progressive.kherkin.common.testcore.Gherkin
-import com.progressive.kherkin.common.testcore.Navigable
-import com.progressive.kherkin.common.testcore.StepNavigator
+import com.progressive.kherkin.espresso.testcore.Navigable
+import com.progressive.kherkin.espresso.testcore.StepNavigator
 
 private val integrationSetup: IntegrationSetupInterface get() = BaseIntegrationComponentHolder.component.integrationSetup()
 
@@ -23,7 +23,7 @@ fun Gherkin.IRenderScreen(screen: Screen) {
 /**
  * Navigates from the [Navigable] [fromScreen]
  * to the [Navigable] [toScreen] via the pathsToScreen() methods in each [Navigable] in the path.
- * Once the last screen is rendered, [IWaitToSeeScreen] is called to verify the [screen] renders properly.
+ * Once the last screen is rendered, [IWaitToSeeScreen] is called to verify the [toScreen] renders properly.
  */
 fun Gherkin.INavigateFromTo(fromScreen: Navigable, toScreen: Navigable) {
     val path = StepNavigator().findPathToScreen(fromScreen, toScreen)

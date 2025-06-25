@@ -1,6 +1,9 @@
-package com.progressive.kherkin.common.testcore
+package com.progressive.kherkin.espresso.testcore
 
 import com.progressive.kherkin.common.screen.Screen
+import com.progressive.kherkin.common.testcore.AndroidLogger
+import com.progressive.kherkin.common.testcore.Logger
+import com.progressive.kherkin.common.testcore.PreconditionsData
 import javax.inject.Inject
 
 /**
