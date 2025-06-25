@@ -28,7 +28,6 @@ fun Gherkin.IRenderScreen(screen: Screen) {
 fun Gherkin.INavigateFromTo(fromScreen: Navigable, toScreen: Navigable) {
     val path = StepNavigator().findPathToScreen(fromScreen, toScreen)
     path.forEach { it.step() }
-    IWaitToSeeScreen(toScreen as Screen)
 }
 
 /**
@@ -40,7 +39,6 @@ fun Gherkin.INavigateToScreen(screen: Navigable) {
     val pathSegments = StepNavigator()
         .findPathToScreen(integrationSetup.getStartScreen() as Navigable, screen)
     pathSegments.forEach { it.step() }
-    IWaitToSeeScreen(pathSegments.last().end as Screen)
 }
 
 /** Start activity and verify [Screen.trait] of starting [Screen]. */
