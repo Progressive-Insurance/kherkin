@@ -34,5 +34,4 @@ dependencies {
     api libs.kotlin.test
     api libs.androidx.rules
     api libs.kotlin.reflect
-    testImplementation project(':espresso')
 }
