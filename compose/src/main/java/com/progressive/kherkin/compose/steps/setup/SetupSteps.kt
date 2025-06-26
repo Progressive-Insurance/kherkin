@@ -26,11 +26,9 @@ fun Gherkin.IRenderScreen(screen: Screen, composeTestRule: ComposeTestRule) {
  * to the [ComposeNavigable] [toScreen] via the pathsToScreen() methods in each [ComposeNavigable] in the path.
  * Once the last screen is rendered, [IWaitToSeeScreen] is called to verify the [toScreen] renders properly.
  */
-fun Gherkin.INavigateFromTo(fromScreen: ComposeNavigable, toScreen: ComposeNavigable, composeTestRule: ComposeTestRule) {
-    val path = ComposeStepNavigator()
-        .findPathToScreen(fromScreen, toScreen, composeTestRule)
+fun Gherkin.INavigateBetweenScreens(fromScreen: ComposeNavigable, toScreen: ComposeNavigable, composeTestRule: ComposeTestRule) {
+    val path = ComposeStepNavigator().findPathToScreen(fromScreen, toScreen, composeTestRule)
     path.forEach { it.step() }
-    IWaitToSeeScreen(toScreen as Screen, composeTestRule)
 }
 
 /**
@@ -42,7 +40,6 @@ fun Gherkin.INavigateToScreen(screen: ComposeNavigable, composeTestRule: Compose
     val path = ComposeStepNavigator()
         .findPathToScreen(integrationSetup.getStartScreen() as ComposeNavigable, screen, composeTestRule)
     path.forEach { it.step() }
-    IWaitToSeeScreen(screen as Screen, composeTestRule)
 }
 
 /** Start activity and verify [Screen.trait] of starting [Screen]. */

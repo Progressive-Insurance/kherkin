@@ -8,7 +8,7 @@ import com.progressive.kherkin.compose.steps.actions.ITouchText
 import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeText
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeTextIsClickable
-import com.progressive.kherkin.compose.steps.setup.INavigateFromTo
+import com.progressive.kherkin.compose.steps.setup.INavigateBetweenScreens
 import com.progressive.kherkin.compose.steps.setup.INavigateToScreen
 import com.progressive.kherkin.compose.steps.setup.IRenderScreen
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
@@ -48,7 +48,7 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
     @Test
     fun testComposeNavigation() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
-        And.INavigateFromTo(BasicComposeScreen(), FinalComposeScreen(), composeTestRule)
+        And.INavigateBetweenScreens(BasicComposeScreen(), FinalComposeScreen(), composeTestRule)
         Then.IShouldSeeText("Final Compose Activity", composeTestRule)
     }
 
