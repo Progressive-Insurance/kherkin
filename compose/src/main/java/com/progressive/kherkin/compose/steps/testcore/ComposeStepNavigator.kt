@@ -1,13 +1,14 @@
 package com.progressive.kherkin.compose.steps.testcore
 
 import androidx.compose.ui.test.junit4.ComposeTestRule
+import com.progressive.kherkin.common.testcore.AndroidLogger
+import com.progressive.kherkin.common.testcore.Logger
 import com.progressive.kherkin.common.testcore.PreconditionsData
 import javax.inject.Inject
 
 class ComposeStepNavigator
 @Inject
-constructor(
-) {
+constructor(private val logger: Logger = AndroidLogger()) {
 
     fun findPathToScreen(startScreen: ComposeNavigable, endScreen: ComposeNavigable, composeTestRule: ComposeTestRule): List<ComposePathSegment> {
         val pathOptions = ArrayList<List<ComposePathSegment>>()
@@ -51,7 +52,7 @@ constructor(
 
         for (segment in nextSegment.start.pathsToScreen(composeTestRule)) {
             if (PreconditionsData.conditionsMatch(segment.preconditions) == 0) {
-//                logger.debug(TAG, "Skipping path $segment. As the preconditions do not match.")
+                logger.debug(TAG, "Skipping path $segment. As the preconditions do not match.")
                 continue
             }
 
@@ -63,7 +64,7 @@ constructor(
                 if (potentialPath.isNotEmpty() && potentialPath.first().end == start && potentialPath.last().start == destination) {
                     possiblePaths.add(potentialPath)
                 } else {
-//                    logger.debug(TAG, "Bad path: ${potentialPath.reversed().map { it.start }}")
+                    logger.debug(TAG, "Bad path: ${potentialPath.reversed().map { it.start }}")
                 }
             }
         }
@@ -75,12 +76,12 @@ constructor(
         paths.forEachIndexed { index, path ->
             val pathBuilder = buildPathString(path.second)
             if (index == 0) {
-//                logger.info(TAG, "Taking path with weight (${path.first}): $pathBuilder")
+                logger.info(TAG, "Taking path with weight (${path.first}): $pathBuilder")
             } else {
-//                logger.debug(
-//                    TAG,
-//                    "Skipping less ideal path with weight (${path.first}): $pathBuilder"
-//                )
+                logger.debug(
+                    TAG,
+                    "Skipping less ideal path with weight (${path.first}): $pathBuilder"
+                )
             }
         }
     }
@@ -98,5 +99,9 @@ constructor(
             }
         }
         return pathBuilder
+    }
+
+    companion object {
+        val TAG = ComposeStepNavigator::class.simpleName!!
     }
 }
