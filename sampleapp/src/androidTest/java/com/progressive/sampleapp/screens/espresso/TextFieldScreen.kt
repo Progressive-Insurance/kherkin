@@ -3,17 +3,15 @@ package com.progressive.sampleapp.screens.espresso
 import android.app.Activity
 import androidx.compose.ui.test.junit4.ComposeTestRule
 import androidx.test.core.app.ActivityScenario
-import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.screen.Trait
-import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.When
 import com.progressive.kherkin.compose.steps.actions.ITouchText
 import com.progressive.kherkin.compose.steps.testcore.ComposeNavigable
 import com.progressive.kherkin.compose.steps.testcore.ComposePathSegment
-import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.espresso.testcore.Navigable
 import com.progressive.kherkin.espresso.testcore.PathSegment
+import com.progressive.kherkin.sampleapp.R
 import com.progressive.sampleapp.activities.xml.TextFieldActivity
 import com.progressive.sampleapp.screens.compose.BasicComposeScreen
 

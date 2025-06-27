@@ -48,14 +48,14 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
     @Test
     fun testComposeNavigation() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
-        And.INavigateBetweenScreens(BasicComposeScreen(), FinalComposeScreen(), composeTestRule)
+        When.INavigateBetweenScreens(BasicComposeScreen(), FinalComposeScreen(), composeTestRule)
         Then.IShouldSeeText("Final Compose Activity", composeTestRule)
     }
 
     @Test
     fun testXmlToComposeNavigation() {
         Given.IRenderScreen(MainScreen())
-        And.INavigateToScreen(FinalComposeScreen(), composeTestRule)
+        When.INavigateToScreen(FinalComposeScreen(), composeTestRule)
         Then.IShouldSeeText("Final Compose Activity", composeTestRule)
     }
 }
