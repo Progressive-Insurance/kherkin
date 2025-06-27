@@ -1,5 +1,8 @@
 package com.progressive.kherkin.espresso
 
+import com.progressive.kherkin.espresso.testcore.StepNavigator
+import com.progressive.kherkin.espresso.testcore.Navigable
+import com.progressive.kherkin.espresso.testcore.PathSegment
 import com.progressive.kherkin.common.testcore.PreconditionsData
 import com.progressive.kherkin.common.testcore.TestLogger
 import org.junit.After

@@ -20,7 +20,7 @@ class AndroidLogger : Logger {
     }
 }
 
-internal object TestLogger: Logger {
+object TestLogger: Logger {
     override fun debug(tag: String, message: String) {
         println("$tag: $message")
     }
