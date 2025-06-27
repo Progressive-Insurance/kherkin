@@ -34,7 +34,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
       - name: Run Unit Tests
-        run: ./gradlew common:testDebug
+        run: ./gradlew testDebug
       - name: Download emu image and platform tools
         run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools"
       - name: Setup emu
