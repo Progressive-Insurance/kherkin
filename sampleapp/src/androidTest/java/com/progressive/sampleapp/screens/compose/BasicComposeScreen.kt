@@ -7,17 +7,12 @@ import com.progressive.kherkin.common.screen.Screen
 import com.progressive.kherkin.common.screen.Trait
 import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.Then
-import com.progressive.kherkin.common.testcore.When
-import com.progressive.kherkin.compose.steps.actions.ITouchText
 import com.progressive.kherkin.compose.steps.testcore.ComposeNavigable
 import com.progressive.kherkin.compose.steps.testcore.ComposePathSegment
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeScreen
-import com.progressive.kherkin.espresso.testcore.Navigable
-import com.progressive.kherkin.espresso.testcore.PathSegment
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.sampleapp.activities.compose.BasicComposeActivity
-import com.progressive.sampleapp.activities.xml.MainActivity
 import com.progressive.sampleapp.screens.espresso.MainScreen
 
 class BasicComposeScreen : Screen(), ComposeNavigable {
