@@ -11,9 +11,13 @@ import android.text.style.ClickableSpan
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.sampleapp.databinding.ActivityButtonBinding
@@ -31,6 +35,8 @@ class ButtonActivity : AppCompatActivity(R.layout.activity_button) {
 
         binding = ActivityButtonBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setStatusBarMargin()
 
         setupClickListeners()
         setupObservers()
@@ -143,5 +149,20 @@ class ButtonActivity : AppCompatActivity(R.layout.activity_button) {
         viewModel.uiClicksLiveData.observe(this, Observer { clicks ->
             binding.buttonClickCounter.text = getString(R.string.button_click_counter_clicked, clicks + 1)
         })
+    }
+
+    private fun setStatusBarMargin() {
+        val view = findViewById<View>(R.id.buttonConstraint)
+        if (view != null) {
+            val params = view.layoutParams
+            if (params is ViewGroup.MarginLayoutParams) {
+                ViewCompat.setOnApplyWindowInsetsListener(view) { _: View?, windowInsets: WindowInsetsCompat ->
+                    val insets = windowInsets.getInsets(WindowInsetsCompat.Type.statusBars())
+                    params.setMargins(0, insets.top, 0, 0)
+                    view.requestLayout()
+                    windowInsets
+                }
+            }
+        }
     }
 }

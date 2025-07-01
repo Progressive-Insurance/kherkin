@@ -18,7 +18,10 @@
         </activity>
         <activity android:name="com.progressive.sampleapp.activities.xml.ListActivity"/>
         <activity android:name="com.progressive.sampleapp.activities.xml.ViewPagerActivity"/>
-        <activity android:name="com.progressive.sampleapp.activities.xml.FinalActivity"/>
+        <activity
+            android:name="com.progressive.sampleapp.activities.xml.FinalActivity"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity android:name="com.progressive.sampleapp.activities.xml.ButtonActivity"/>
         <activity android:name="com.progressive.sampleapp.activities.xml.TextFieldActivity"/>
         <activity android:name="com.progressive.sampleapp.activities.xml.WebViewActivity"/>

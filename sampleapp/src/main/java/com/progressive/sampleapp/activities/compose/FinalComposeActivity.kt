@@ -48,7 +48,8 @@ private fun SetupContent() {
 
 @Composable
 private fun Greeting() {
-    Text(text = stringResource(id = R.string.final_title))
+    Text(text = stringResource(id = R.string.final_title),
+        modifier = Modifier.padding(24.dp))
 }
 
 @Composable

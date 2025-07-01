@@ -10,8 +10,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.graphics.Insets
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -43,6 +46,8 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setStatusBarMargin()
 
         setupMenu()
         setupClickListeners()
@@ -133,6 +138,21 @@ class MainFragment : Fragment() {
         }
         viewModel.timePickerTextLiveData.observe(viewLifecycleOwner) { time ->
             binding.textTimePicker.setText(time)
+        }
+    }
+
+    private fun setStatusBarMargin() {
+        val view = activity?.findViewById<View>(R.id.constraint)
+        if (view != null) {
+            val params = view.layoutParams
+            if (params is ViewGroup.MarginLayoutParams) {
+                ViewCompat.setOnApplyWindowInsetsListener(view) { _: View?, windowInsets: WindowInsetsCompat ->
+                    val insets = windowInsets.getInsets(WindowInsetsCompat.Type.statusBars())
+                    params.setMargins(0, insets.top, 0, 0)
+                    view.requestLayout()
+                    windowInsets
+                }
+            }
         }
     }
 }
