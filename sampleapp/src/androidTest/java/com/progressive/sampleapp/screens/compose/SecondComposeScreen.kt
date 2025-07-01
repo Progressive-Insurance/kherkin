@@ -10,27 +10,28 @@ import com.progressive.kherkin.compose.steps.testcore.ComposeNavigable
 import com.progressive.kherkin.compose.steps.testcore.ComposePathSegment
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
 import com.progressive.kherkin.sampleapp.R
-import com.progressive.sampleapp.activities.compose.BasicComposeActivity
-import com.progressive.sampleapp.screens.espresso.MainScreen
+import com.progressive.sampleapp.activities.compose.SecondComposeActivity
+import com.progressive.sampleapp.screens.espresso.TextFieldScreen
 
-class BasicComposeScreen : Screen(), ComposeNavigable {
+class SecondComposeScreen : Screen(), ComposeNavigable {
 
-    override lateinit var activityScenario: ActivityScenario<BasicComposeActivity>
-    override val trait: Trait = Trait("Hello user!")
-    override fun screenActivityClass(): Class<out Activity> = BasicComposeActivity::class.java
+    override lateinit var activityScenario: ActivityScenario<SecondComposeActivity>
+    override val trait: Trait = Trait("Second Compose Activity")
+    override fun screenActivityClass(): Class<out Activity> = SecondComposeActivity::class.java
 
     override fun startMyActivity() {
-        activityScenario = ActivityScenario.launch(BasicComposeActivity::class.java)
+        activityScenario = ActivityScenario.launch(SecondComposeActivity::class.java)
     }
 
     override fun pathsToScreen(composeTestRule: ComposeTestRule): List<ComposePathSegment> {
         val pathSegments = mutableListOf<ComposePathSegment>()
         pathSegments.add(
             ComposePathSegment(
-                start = MainScreen(),
+                start = TextFieldScreen(),
                 end = this,
-                step = {
-                    And.ITouchButton(R.id.buttonNavCompose)
+                step =
+                {
+                    And.ITouchButton(R.id.buttonNavSecondCompose)
                 }
             )
         )
