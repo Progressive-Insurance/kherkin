@@ -43,7 +43,7 @@ android {
         execution "ANDROIDX_TEST_ORCHESTRATOR"
         managedDevices {
             localDevices {
-                pixel5api34 {
+                pixel5api35 {
                     device = "Pixel 5"
                     apiLevel = 35
                     systemImageSource = "aosp-atd"
