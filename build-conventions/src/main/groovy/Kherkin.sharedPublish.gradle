@@ -22,7 +22,7 @@ def getVersionName = { ->
 }
 
 android {
-    compileSdk 34
+    compileSdk 35
     version getVersionName()
 
     publishing {
@@ -34,7 +34,7 @@ android {
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
+        targetSdk 35
         versionName getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

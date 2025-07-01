@@ -38,9 +38,9 @@ jobs:
       - name: Download emu image and platform tools
         run: echo "yes" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools"
       - name: Setup emu
-        run: ./gradlew sampleapp:pixel5api34Setup
+        run: ./gradlew sampleapp:pixel5api35Setup
       - name: Run UI Tests
-        run: ./gradlew sampleapp:pixel5api34DebugAndroidTest -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect
+        run: ./gradlew sampleapp:pixel5api35DebugAndroidTest -Pandroid.testoptions.manageddevices.emulator.gpu=swiftshader_indirect
 
   publish_release:
     name: Publish Release

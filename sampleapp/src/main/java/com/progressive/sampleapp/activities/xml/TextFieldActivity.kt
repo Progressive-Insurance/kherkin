@@ -5,7 +5,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.sampleapp.databinding.ActivityTextFieldBinding
 import com.progressive.sampleapp.activities.compose.SecondComposeActivity
@@ -26,6 +30,8 @@ class TextFieldActivity : AppCompatActivity(R.layout.activity_text_field) {
 
         binding = ActivityTextFieldBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setStatusBarMargin()
 
         binding.editTextEnabledLeft.addTextChangedListener(enabledTextWatcher)
         binding.editTextVisibleLeft.addTextChangedListener(visibilityTextWatcher)
@@ -78,6 +84,21 @@ class TextFieldActivity : AppCompatActivity(R.layout.activity_text_field) {
         } else {
             binding.editTextContainer2.visibility = View.VISIBLE
             binding.editTextWithLabel2.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setStatusBarMargin() {
+        val view = findViewById<View>(R.id.textConstraint)
+        if (view != null) {
+            val params = view.layoutParams
+            if (params is ViewGroup.MarginLayoutParams) {
+                ViewCompat.setOnApplyWindowInsetsListener(view) { _: View?, windowInsets: WindowInsetsCompat ->
+                    val insets = windowInsets.getInsets(WindowInsetsCompat.Type.statusBars())
+                    params.setMargins(0, insets.top, 0, 0)
+                    view.requestLayout()
+                    windowInsets
+                }
+            }
         }
     }
 }
