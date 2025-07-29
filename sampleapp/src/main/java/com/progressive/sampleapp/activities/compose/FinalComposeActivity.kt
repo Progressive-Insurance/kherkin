@@ -32,14 +32,14 @@ class FinalComposeActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background
             ) {
-                SetupContent()
+                SetupFinalComposeActivityContent()
             }
         }
     }
 }
 
 @Composable
-private fun SetupContent() {
+private fun SetupFinalComposeActivityContent() {
     Column {
         Greeting()
         BasicButton()
@@ -73,5 +73,5 @@ private fun BasicButton() {
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    SetupContent()
+    SetupFinalComposeActivityContent()
 }
