@@ -36,7 +36,14 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withLink
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.progressive.kherkin.sampleapp.R
@@ -84,6 +91,7 @@ fun SmallTopAppBar() {
             TextFieldPrefilled()
             ScrollBoxes()
             NavigateButton()
+            Link()
         }
     }
 }
@@ -218,6 +226,37 @@ private fun NavigateButton() {
             .testTag("Navigate Compose Button")
     ) {
         Text(buttonText)
+    }
+}
+
+@Composable
+private fun Link() {
+    val annotatedLinkString: AnnotatedString = remember {
+        buildAnnotatedString {
+            val style = SpanStyle(color = Color.Black)
+            val styleCenter = SpanStyle(
+                color = Color(0xff64B5F6),
+                textDecoration = TextDecoration.Underline)
+
+            withStyle(style = style) {
+                append("Click this ")
+            }
+
+            withLink(LinkAnnotation.Url(url = "https://github.com")) {
+                withStyle(style = styleCenter) {
+                    append("link")
+                }
+            }
+
+            withStyle(style = style) {
+                append(" to visit GitHub.")
+            }
+        }
+    }
+
+    Column(modifier = Modifier.padding(10.dp)) {
+        Text(annotatedLinkString,
+            modifier = Modifier.testTag("annotatedLink"))
     }
 }
 
