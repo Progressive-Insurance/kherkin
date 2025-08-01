@@ -4,6 +4,8 @@ import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.Given
 import com.progressive.kherkin.common.testcore.Then
 import com.progressive.kherkin.common.testcore.When
+import com.progressive.kherkin.compose.steps.actions.ITouchLinkWithTag
+import com.progressive.kherkin.compose.steps.actions.ITouchLinkWithText
 import com.progressive.kherkin.compose.steps.actions.ITouchText
 import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeText
@@ -57,5 +59,19 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
         Given.IRenderScreen(MainScreen())
         When.INavigateToScreen(FinalComposeScreen(), composeTestRule)
         Then.IShouldSeeText("Final Compose Activity", composeTestRule)
+    }
+
+    @Test
+    fun testAnnotatedLinkClickWithText() {
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        When.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
+        Then.ITouchLinkWithText("Click this link to visit GitHub.", composeTestRule)
+    }
+
+    @Test
+    fun testAnnotatedLinkClickWithTag() {
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        When.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
+        Then.ITouchLinkWithTag("annotatedLink", composeTestRule)
     }
 }
