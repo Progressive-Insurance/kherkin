@@ -17,13 +17,13 @@ class TestScrollSteps : SampleBaseIntegrationTestCase() {
     fun testScrollOnNode() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
         When.IScrollOnNodeUntillISee("Scroll Box", "Scroll Item 9", composeTestRule)
-        Then.IShouldSeeNodeWithText("Scroll Item 9", "Item 9", composeTestRule)
+        Then.IShouldSeeNodeWithText("Scroll Item 9", "Scroll item 9", composeTestRule)
     }
 
     @Test
     fun testScrollOnNodeWithText() {
         Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
-        When.IScrollOnNodeUntillISeeText("Scroll Box", "Item 9", composeTestRule)
-        Then.IShouldSeeNodeWithText("Scroll Item 9", "Item 9", composeTestRule)
+        When.IScrollOnNodeUntillISeeText("Scroll Box", "Scroll item 9", composeTestRule)
+        Then.IShouldSeeNodeWithText("Scroll Item 9", "Scroll item 9", composeTestRule)
     }
 }
