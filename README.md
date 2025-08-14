@@ -1,3 +1,5 @@
+<img width="3709" height="1071" alt="Kherkin Logo Text" src="https://github.com/user-attachments/assets/6104773a-a805-4fe0-91f7-d80b9724e997" />
+
 # Kherkin
 
 Kherkin ([Kotlin](https://kotlinlang.org/) + [Gherkin](https://cucumber.io/docs/gherkin/)) is an instrumentation testing framework that simplifies writing UI tests for Android. The Gherkin-like syntax makes it easier to build the test scenarios as a collaboration between developers and non-developers. Predefined step definitions allow for writing tests without having to fiddle with the [Espresso testing framework](https://developer.android.com/training/testing/espresso) or the [Jetpack Compose testing APIs](https://developer.android.com/develop/ui/compose/testing). Tests can start from any activity without navigating the entire application.
@@ -203,3 +205,7 @@ Please see the [contributing file](CONTRIBUTING.md) on how to contribute to this
 ## Code of Conduct
 
 Help us make this project open and inclusive. Please follow our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+<p align="center">
+    <img width="320" height="320" alt="Kherkin Logo" src="https://github.com/user-attachments/assets/de27771f-f270-49d7-8ff8-39a95f6bd298" />
+</p>
