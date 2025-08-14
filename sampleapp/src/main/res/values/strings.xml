@@ -115,4 +115,5 @@
 
 <!--  FinalComposeActivity  -->
     <string name="final_title">Final Compose Activity</string>
+    <string name="kherkin_logo_content_description">Kherkin Logo</string>
 </resources>

@@ -142,4 +142,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonNav" />
 
+    <ImageView
+        android:id="@+id/kherkin_logo"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:contentDescription="@string/kherkin_logo_content_description"
+        android:src="@drawable/kherkin_logo"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonNavCompose"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

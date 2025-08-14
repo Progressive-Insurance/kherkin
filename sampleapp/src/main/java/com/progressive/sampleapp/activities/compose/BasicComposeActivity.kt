@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,6 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
@@ -92,6 +94,7 @@ fun SmallTopAppBar() {
             ScrollBoxes()
             NavigateButton()
             Link()
+            Logo()
         }
     }
 }
@@ -194,16 +197,16 @@ private fun TextFieldPrefilled() {
 private fun ScrollBoxes() {
     Column(
         modifier = Modifier
-            .background(Color.LightGray)
-            .size(100.dp)
-            .padding(20.dp)
+            .size(120.dp)
+            .padding(10.dp, 4.dp)
             .verticalScroll(rememberScrollState())
+            .background(Color.LightGray)
             .testTag("Scroll Box")
     ) {
         repeat(10) {
-            Text("Item $it",
+            Text("Scroll item $it",
                 modifier = Modifier
-                    .padding(2.dp)
+                    .padding(8.dp, 4.dp)
                     .testTag("Scroll Item $it")
             )
         }
@@ -258,6 +261,17 @@ private fun Link() {
         Text(annotatedLinkString,
             modifier = Modifier.testTag("annotatedLink"))
     }
+}
+
+@Composable
+private fun Logo() {
+    Image(
+        painter = painterResource(id = R.drawable.kherkin_logo),
+        contentDescription = stringResource(id = R.string.kherkin_logo_content_description),
+        modifier = Modifier
+            .size(120.dp)
+            .testTag("Logo")
+    )
 }
 
 @Preview(showBackground = true)
