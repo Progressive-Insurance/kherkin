@@ -50,6 +50,9 @@ android {
                 }
             }
         }
+        emulatorControl {
+            enable = true
+        }
     }
 }
 

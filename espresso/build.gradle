@@ -25,6 +25,7 @@ dependencies {
     implementation libs.material
     implementation libs.junit
     implementation libs.androidx.junit
+    implementation libs.androidx.espresso.device
     api(libs.androidx.uiautomator)
     api(libs.espresso.core)
     api(libs.espresso.contrib)
