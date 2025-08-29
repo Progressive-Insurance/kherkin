@@ -22,6 +22,7 @@ class TestScreenOrientationSteps : SampleBaseIntegrationTestCase() {
         When.IRotateToLandscape()
         Then.IShouldSee(R.id.buttonNav)
         And.IShouldNotSee(R.id.kherkin_logo)
+        And.IRotateToPortrait()
     }
 
     @Test
