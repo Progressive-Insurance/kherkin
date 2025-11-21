@@ -8,11 +8,11 @@ import androidx.compose.ui.test.performScrollToNode
 import com.progressive.kherkin.common.testcore.Gherkin
 
  /** Scrolls a scrollable container [tagOfScrollableContainer] to the matching [tag]. */
-fun Gherkin.IScrollOnNodeUntillISee(tagOfScrollableContainer: String, tag: String, composeTestRule: ComposeTestRule) {
+fun Gherkin.IScrollOnNodeUntilISee(tagOfScrollableContainer: String, tag: String, composeTestRule: ComposeTestRule) {
     composeTestRule.onNodeWithTag(tagOfScrollableContainer).performScrollToNode(hasTestTag(tag))
 }
 
 /** Scrolls a scrollable container [tagOfScrollableContainer] to the matching [text]. */
-fun Gherkin.IScrollOnNodeUntillISeeText(tagOfScrollableContainer: String, text: String, composeTestRule: ComposeTestRule) {
+fun Gherkin.IScrollOnNodeUntilISeeText(tagOfScrollableContainer: String, text: String, composeTestRule: ComposeTestRule) {
     composeTestRule.onNodeWithTag(tagOfScrollableContainer).performScrollToNode(hasText(text))
 }
