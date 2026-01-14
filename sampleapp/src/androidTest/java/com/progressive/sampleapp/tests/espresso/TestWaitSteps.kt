@@ -1,9 +1,9 @@
 package com.progressive.sampleapp.tests.espresso
 
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import com.progressive.kherkin.common.steps.actions.IWaitLong
 import com.progressive.kherkin.sampleapp.R
 import com.progressive.kherkin.espresso.steps.actions.ITouchButton
-import com.progressive.kherkin.espresso.steps.actions.IWaitLong
 import com.progressive.kherkin.espresso.steps.actions.IWaitToDismissSharesheetContainingText
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeTextOnCurrentScreen
 import com.progressive.kherkin.espresso.steps.actions.IWaitToSeeViewContainingTextOnCurrentScreen

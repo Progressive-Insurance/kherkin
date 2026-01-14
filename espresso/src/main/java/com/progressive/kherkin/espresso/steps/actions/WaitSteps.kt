@@ -131,14 +131,6 @@ fun Gherkin.IWaitToSeeAlert(timeoutInMillis: Long = EXTRA_LONG_TIMEOUT) {
 }
 
 /**
- * Waits for [timeoutInMillis] or a default of [EXTRA_LONG_TIMEOUT] milliseconds. Recommended to
- * only use for debugging purposes.
- */
-fun Gherkin.IWaitLong(timeoutInMillis: Long = EXTRA_LONG_TIMEOUT) {
-    SystemClock.sleep(timeoutInMillis)
-}
-
-/**
  * Waits to see a view outside the context of the current activity with text containing
  * [expectedText] for [timeoutInMillis] or a default of [LONG_TIMEOUT] milliseconds and
  * dismisses it.
