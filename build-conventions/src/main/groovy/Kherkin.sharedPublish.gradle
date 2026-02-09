@@ -149,7 +149,7 @@ jreleaser {
             repoOwner = 'Progressive-Insurance'
             name = 'kherkin'
             branch = 'main'
-            token = System.getenv('JRELEASER_GITHUB_TOKEN')
+            token = System.getenv('GITHUB_TOKEN')
             skipTag = true
             tagName = getVersionName()
             changelog {
