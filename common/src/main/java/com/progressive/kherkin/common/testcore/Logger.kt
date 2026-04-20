@@ -12,20 +12,20 @@ interface Logger {
 
 class AndroidLogger : Logger {
     override fun debug(tag: String, message: String) {
-        Log.d(tag, message)
+        Log.d(tag + "AndroidLogger", message)
     }
 
     override fun info(tag: String, message: String) {
-        Log.i(tag, message)
+        Log.i(tag + "AndroidLogger", message)
     }
 }
 
 object TestLogger: Logger {
     override fun debug(tag: String, message: String) {
-        println("$tag: $message")
+        println("$tag TestLogger: $message")
     }
 
     override fun info(tag: String, message: String) {
-        println("$tag: $message")
+        println("$tag TestLogger: $message")
     }
 }
