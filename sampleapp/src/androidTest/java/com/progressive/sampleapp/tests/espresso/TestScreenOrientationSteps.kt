@@ -4,8 +4,8 @@ import com.progressive.kherkin.common.testcore.And
 import com.progressive.kherkin.common.testcore.Given
 import com.progressive.kherkin.common.testcore.Then
 import com.progressive.kherkin.common.testcore.When
-import com.progressive.kherkin.espresso.steps.actions.IRotateToLandscape
-import com.progressive.kherkin.espresso.steps.actions.IRotateToPortrait
+import com.progressive.kherkin.espresso.steps.actions.ISetOrientationToLandscape
+import com.progressive.kherkin.espresso.steps.actions.ISetOrientationToPortrait
 import com.progressive.kherkin.espresso.steps.assertion.IShouldNotSee
 import com.progressive.kherkin.espresso.steps.assertion.IShouldSee
 import com.progressive.kherkin.espresso.steps.setup.IRenderScreen
@@ -19,18 +19,18 @@ class TestScreenOrientationSteps : SampleBaseIntegrationTestCase() {
     @Test
     fun testRotateToLandscapeStep() {
         Given.IRenderScreen(MainScreen())
-        When.IRotateToLandscape()
+        When.ISetOrientationToLandscape()
         Then.IShouldSee(R.id.buttonNav)
         And.IShouldNotSee(R.id.kherkin_logo)
-        And.IRotateToPortrait()
+        And.ISetOrientationToPortrait()
     }
 
     @Test
     fun testRotateToPortraitStep() {
         Given.IRenderScreen(MainScreen())
-        And.IRotateToLandscape()
+        And.ISetOrientationToLandscape()
         And.IShouldNotSee(R.id.kherkin_logo)
-        When.IRotateToPortrait()
+        When.ISetOrientationToPortrait()
         Then.IShouldSee(R.id.kherkin_logo)
     }
 }
