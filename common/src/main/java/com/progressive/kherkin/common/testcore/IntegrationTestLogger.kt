@@ -23,3 +23,14 @@ class IntegrationTestLogger {
         var LOGCAT_TAG = "UI_TESTS"
     }
 }
+
+class ComposeTestLogger {
+
+    fun info(message: String) {
+        Log.i(LOGCAT_TAG, message)
+    }
+
+    companion object {
+        const val LOGCAT_TAG = "ComposeStep:"
+    }
+}

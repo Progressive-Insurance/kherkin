@@ -29,5 +29,4 @@ open class SampleBaseIntegrationTestCase : BaseIntegrationTestCase() {
         }
         super.tearDown()
     }
-
 }

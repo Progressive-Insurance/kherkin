@@ -6,6 +6,7 @@ import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import com.progressive.kherkin.common.screen.IScreen
 import com.progressive.kherkin.common.screen.Screen
+import com.progressive.kherkin.common.testcore.ComposeTestLogger
 import com.progressive.kherkin.common.testcore.IntegrationTestLogger
 
 /**
@@ -33,6 +34,7 @@ object TraitVerifier {
                     .onAllNodesWithText(it)
                     .fetchSemanticsNodes().size == 1
             }
+            ComposeTestLogger().info("${::verifyTrait.name}: onNodeWithText($it).assertIsDisplayed()")
             composeTestRule.onNodeWithText(it).assertIsDisplayed()
         }
     }
