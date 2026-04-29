@@ -2,12 +2,12 @@ package com.progressive.kherkin.compose.steps.actions
 
 import android.os.SystemClock
 import androidx.compose.ui.test.junit4.ComposeTestRule
-import com.progressive.kherkin.compose.steps.setup.TraitVerifier
 import com.progressive.kherkin.common.screen.ActivityHelper
 import com.progressive.kherkin.common.screen.IScreen
 import com.progressive.kherkin.common.testcore.Gherkin
 import com.progressive.kherkin.common.testcore.IntegrationTestLogger
 import com.progressive.kherkin.common.testcore.TimeoutConstants
+import com.progressive.kherkin.compose.steps.setup.TraitVerifier
 
 /**
  * Waits to see a Composable [Screen] for [timeoutInMillis] or a default of [LONG_TIMEOUT] milliseconds.
