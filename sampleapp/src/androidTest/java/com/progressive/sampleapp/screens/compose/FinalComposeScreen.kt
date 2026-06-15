@@ -14,7 +14,7 @@ import com.progressive.sampleapp.activities.compose.FinalComposeActivity
 class FinalComposeScreen : Screen(), ComposeNavigable {
 
     override lateinit var activityScenario: ActivityScenario<FinalComposeActivity>
-    override val trait: Trait = Trait("Final Compose Activity")
+    override val trait: Trait = Trait("Final Compose Activity", "Final Compose Title Tag")
     override fun screenActivityClass(): Class<out Activity> = FinalComposeActivity::class.java
 
     override fun startMyActivity() {
