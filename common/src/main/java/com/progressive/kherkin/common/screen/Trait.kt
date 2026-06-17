@@ -12,20 +12,30 @@ class Trait {
     @IdRes
     val viewId: Int
     val text: String?
+    val tag: String?
 
     constructor(@IdRes viewId: Int) {
         this.viewId = viewId
         text = null
+        tag = null
     }
 
     constructor(text: String) {
         viewId = -1
         this.text = text
+        tag = null
     }
 
     constructor(@IdRes viewId: Int, text: String) {
         this.viewId = viewId
         this.text = text
+        tag = null
+    }
+
+    constructor(text: String, tag: String) {
+        this.text = text
+        this.tag = tag
+        this.viewId = -1
     }
 
     companion object {

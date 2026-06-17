@@ -1,8 +1,12 @@
 package com.progressive.kherkin.compose.steps.setup
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.ComposeTestRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import com.progressive.kherkin.common.screen.IScreen
 import com.progressive.kherkin.common.screen.Screen
@@ -18,24 +22,51 @@ import com.progressive.kherkin.common.testcore.IntegrationTestLogger
 object TraitVerifier {
 
     @JvmStatic
-    fun verifyTrait(screen: IScreen, composeTestRule: ComposeTestRule, timeoutInMillis: Long = 2000) {
+    fun verifyTrait(
+        screen: IScreen,
+        composeTestRule: ComposeTestRule,
+        timeoutInMillis: Long = 2000
+    ) {
         val trait = screen.trait
-        if (trait.text == null) {
-            val logger = IntegrationTestLogger()
-            logger.info("ScreenActivityName: $screen")
-            throw RuntimeException("Timed out waiting for activity: $screen, no trait text found.")
-        }
-        trait.text.let {
-            if (it == null) {
-                return
+        val tag = screen.trait.tag
+        val text = screen.trait.text
+        when {
+            tag != null && text != null -> {
+                val tag = trait.tag ?: return
+                val text = trait.text ?: return
+                composeTestRule.waitUntil(timeoutInMillis) {
+                    composeTestRule
+                        .onAllNodes(hasTestTag(tag).and(hasText(text)))
+                        .fetchSemanticsNodes().size == 1
+                }
+                ComposeTestLogger().info("${::verifyTrait.name}: onNode(hasTestTag($tag).and(hasText($text))).assertIsDisplayed()")
+                composeTestRule.onNode(hasTestTag(tag).and(hasText(text))).assertIsDisplayed()
             }
-            composeTestRule.waitUntil(timeoutInMillis) {
-                composeTestRule
-                    .onAllNodesWithText(it)
-                    .fetchSemanticsNodes().size == 1
+
+            text != null -> {
+                composeTestRule.waitUntil(timeoutInMillis) {
+                    composeTestRule
+                        .onAllNodesWithText(text)
+                        .fetchSemanticsNodes().size == 1
+                }
+                ComposeTestLogger().info("${::verifyTrait.name}: onNodeWithText($text).assertIsDisplayed()")
+                composeTestRule.onNodeWithText(text).assertIsDisplayed()
             }
-            ComposeTestLogger().info("${::verifyTrait.name}: onNodeWithText($it).assertIsDisplayed()")
-            composeTestRule.onNodeWithText(it).assertIsDisplayed()
+
+            tag != null -> {
+                composeTestRule.waitUntil(timeoutInMillis) {
+                    composeTestRule
+                        .onAllNodesWithTag(tag)
+                        .fetchSemanticsNodes().size == 1
+                }
+                ComposeTestLogger().info("${::verifyTrait.name}: onNodeWithTag($tag).assertIsDisplayed()")
+                composeTestRule.onNodeWithTag(tag).assertIsDisplayed()
+            }
+
+            else -> {
+                IntegrationTestLogger().info("ScreenActivityName: $screen")
+                throw RuntimeException("Timed out waiting for activity: $screen, no traits found.")
+            }
         }
     }
 }
