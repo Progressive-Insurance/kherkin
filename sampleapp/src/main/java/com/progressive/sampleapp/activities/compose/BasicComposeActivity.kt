@@ -91,6 +91,7 @@ fun SmallTopAppBar() {
             HidingButton(buttonIsVisible = buttonVisibility, changeValue = { buttonVisibility = it } )
             TextField()
             TextFieldPrefilled()
+            TextFieldPrefilledDisabled()
             ScrollBoxes()
             NavigateButton()
             Link()
@@ -190,6 +191,33 @@ private fun TextFieldPrefilled() {
         modifier = Modifier
             .padding(10.dp)
             .testTag("Prefilled Field")
+    )
+}
+
+@Composable
+private fun TextFieldPrefilledDisabled() {
+    val focusManager = LocalFocusManager.current
+    val textFieldText = stringResource(id = R.string.disabled_text_field)
+    var text by remember { mutableStateOf(textFieldText) }
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    TextField(
+        value = text,
+        onValueChange = { text = it },
+        label = { Text(stringResource(id = R.string.label)) },
+        placeholder = { Text(stringResource(id = R.string.placeholder)) },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                keyboardController?.hide()
+                focusManager.clearFocus()
+            }
+        ),
+        enabled = false,
+        modifier = Modifier
+            .padding(10.dp)
+            .testTag("Disabled Field")
     )
 }
 
