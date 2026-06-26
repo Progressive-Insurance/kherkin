@@ -62,7 +62,7 @@ jobs:
       - name: Deploy
         run: |
           if [[ '${{ github.ref }}' =~ 'refs/tags' ]]; then
-            ./gradlew jreleaserFullRelease
+            ./gradlew common:jreleaserFullRelease
           else
             ./gradlew common:jreleaserDeploy
           fi

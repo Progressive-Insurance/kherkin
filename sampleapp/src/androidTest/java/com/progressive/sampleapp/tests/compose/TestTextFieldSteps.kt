@@ -7,6 +7,10 @@ import com.progressive.kherkin.common.testcore.When
 import com.progressive.kherkin.compose.steps.actions.IClearField
 import com.progressive.kherkin.compose.steps.actions.IEnterTextIntoField
 import com.progressive.kherkin.compose.steps.actions.ILeaveFieldEmpty
+import com.progressive.kherkin.compose.steps.actions.IWaitToSeeScreen
+import com.progressive.kherkin.compose.steps.assertion.IShouldSeeDisabledTextField
+import com.progressive.kherkin.compose.steps.assertion.IShouldSeeDisabledTextFieldWithTagAndText
+import com.progressive.kherkin.compose.steps.assertion.IShouldSeeDisabledTextFieldWithText
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeTextField
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeTextFieldWithTagAndText
 import com.progressive.kherkin.compose.steps.assertion.IShouldSeeTextFieldWithText
@@ -40,5 +44,14 @@ class TestTextFieldSteps : SampleBaseIntegrationTestCase() {
         And.IShouldSeeTextField("Prefilled Field", composeTestRule)
         When.IClearField("Prefilled Field", composeTestRule)
         Then.IShouldSeeTextFieldWithTagAndText("Prefilled Field", "", composeTestRule)
+    }
+
+    @Test
+    fun testDisabledTextField() {
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        When.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
+        Then.IShouldSeeDisabledTextField("Disabled Field", composeTestRule)
+        And.IShouldSeeDisabledTextFieldWithText("Disabled text field", composeTestRule)
+        And.IShouldSeeDisabledTextFieldWithTagAndText("Disabled Field", "Disabled text field", composeTestRule)
     }
 }

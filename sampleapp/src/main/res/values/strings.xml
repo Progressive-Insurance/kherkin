@@ -109,6 +109,7 @@
     <string name="label">Label</string>
     <string name="placeholder">Placeholder</string>
     <string name="prefilled_text_field">Default text</string>
+    <string name="disabled_text_field">Disabled text field</string>
 
 <!--  SecondComposeActivity  -->
     <string name="second_title">Second Compose Activity</string>
