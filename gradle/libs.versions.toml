@@ -1,6 +1,6 @@
 [versions]
 activityCompose = "1.10.1"
-androidGradlePlugin = "8.6.1"
+androidGradlePlugin = "8.13.2"
 androidxJunit = "1.2.1"
 androidxNavigation = "2.9.0"
 androidxRules = "1.6.1"
@@ -14,11 +14,11 @@ espressoDevice = "1.1.0"
 findbugs = "3.0.2"
 fragmentKtx = "1.8.8"
 javaxInject = "1"
-jreleaser = "1.24.0"
 junit = "4.13.2"
 kotlin = "2.1.10"
 lifecycleViewmodelKtx = "2.9.1"
 material = "1.12.0"
+mavenPublish = "0.37.0"
 orchestrator = "1.5.1"
 viewbinding = "8.11.0"
 
@@ -58,5 +58,5 @@ viewbinding = { module = "com.android.databinding:viewbinding", version.ref = "v
 com-android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 com-android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-jreleaser = { id = "org.jreleaser", version.ref = "jreleaser" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

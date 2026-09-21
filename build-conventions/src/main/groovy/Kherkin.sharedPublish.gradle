@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'maven-publish'
-    id 'org.jreleaser'
+    id 'com.vanniktech.maven.publish'
 }
 
 def getVersionName = { ->
@@ -12,9 +12,9 @@ def getVersionName = { ->
             standardOutput = stdout
         }
         def describe = stdout.toString().trim()
-        if (describe.contains("-")) {
+//        if (describe.contains("-")) {
             describe += "-SNAPSHOT"
-        }
+//        }
         return describe
     } catch (Exception ignored) {
         return "1.0.0"
@@ -24,13 +24,6 @@ def getVersionName = { ->
 android {
     compileSdk 35
     version getVersionName()
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
-        }
-    }
 
     defaultConfig {
         minSdk 24
@@ -55,109 +48,34 @@ android {
     }
 }
 
-tasks.register('prepareDirs') {
-    mustRunAfter clean
-    doLast {
-        mkdir "build/jreleaser"
-    }
-}
+mavenPublishing {
+    publishToMavenCentral()
+    signAllPublications()
 
-afterEvaluate {
-    tasks.withType(PublishToMavenRepository).configureEach {
-        dependsOn(tasks.prepareDirs)
-    }
+    coordinates("com.progressive.kherkin", "kherkin", getVersionName())
 
-    publishing {
-        publications {
-            publishLibrary(MavenPublication) {
-                groupId 'com.progressive.kherkin'
-                artifactId ARTIFACT_ID
-
-                afterEvaluate {
-                    from components.release
-                }
-
-                pom {
-                    name = ARTIFACT_ID
-                    description = DESCRIPTION
-                    url = 'https://github.com/Progressive-Insurance/kherkin'
-                    inceptionYear = '2024'
-
-                    licenses {
-                        license {
-                            name = 'MIT License'
-                            url = 'http://www.opensource.org/licenses/mit-license.php'
-                        }
-                    }
-
-                    developers {
-                        developer {
-                            name = 'Matthew Rockwell'
-                            email = 'smugleafdev@gmail.com'
-                        }
-                    }
-
-                    scm {
-                        connection = 'scm:git:https://github.com/Progressive-Insurance/kherkin.git'
-                        developerConnection = 'scm:git:ssh://github.com/Progressive-Insurance/kherkin.git'
-                        url = 'http://github.com/Progressive-Insurance/kherkin'
-                    }
-                }
+    pom {
+        name = ARTIFACT_ID
+        description = DESCRIPTION
+        inceptionYear = "2024"
+        url = "https://github.com/Progressive-Insurance/kherkin"
+        licenses {
+            license {
+                name = "MIT License"
+                url = "http://www.opensource.org/licenses/mit-license.php"
             }
         }
-
-        repositories {
-            maven {
-                url = rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString()
+        developers {
+            developer {
+                id = "smugleafdev"
+                name = "Matthew Rockwell"
+                url = "https://github.com/smugleafdev"
             }
         }
-    }
-}
-
-jreleaser {
-    gitRootSearch = true
-    signing {
-        active = 'ALWAYS'
-        armored = true
-    }
-    deploy {
-        maven {
-            mavenCentral {
-                sonatype {
-                    active = 'RELEASE'
-                    url = 'https://central.sonatype.com/api/v1/publisher'
-                    stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
-                    verifyPom = false
-                }
-            }
-            nexus2 {
-                'maven-central' {
-                    active = 'SNAPSHOT'
-                    snapshotSupported = true
-                    url = 'https://central.sonatype.com/api/v1/publisher'
-                    snapshotUrl = 'https://central.sonatype.com/repository/maven-snapshots/'
-                    stagingRepository(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile.absolutePath.toString())
-                    verifyPom = false
-                    authorization = 'BASIC'
-                }
-            }
-        }
-    }
-
-    release {
-        github {
-            repoOwner = 'Progressive-Insurance'
-            name = 'kherkin'
-            branch = 'main'
-            token = System.getenv('JRELEASER_GITHUB_TOKEN')
-            skipTag = true
-            tagName = getVersionName()
-            changelog {
-                enabled = false
-            }
-            releaseNotes {
-                enabled = true
-            }
+        scm {
+            url = "http://github.com/Progressive-Insurance/kherkin"
+            connection = "scm:git:https://github.com/Progressive-Insurance/kherkin.git"
+            developerConnection = "scm:git:ssh://github.com/Progressive-Insurance/kherkin.git"
         }
     }
 }
