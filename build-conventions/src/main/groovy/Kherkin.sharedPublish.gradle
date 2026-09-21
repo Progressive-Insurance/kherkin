@@ -48,34 +48,36 @@ android {
     }
 }
 
-mavenPublishing {
-    publishToMavenCentral()
-    signAllPublications()
+afterEvaluate {
+    mavenPublishing {
+        publishToMavenCentral(true, DeploymentValidation.PUBLISHED)
+        signAllPublications()
 
-    coordinates("com.progressive.kherkin", "kherkin", getVersionName())
+        coordinates("com.progressive.kherkin", ARTIFACT_ID, getVersionName())
 
-    pom {
-        name = ARTIFACT_ID
-        description = DESCRIPTION
-        inceptionYear = "2024"
-        url = "https://github.com/Progressive-Insurance/kherkin"
-        licenses {
-            license {
-                name = "MIT License"
-                url = "http://www.opensource.org/licenses/mit-license.php"
+        pom {
+            name = ARTIFACT_ID
+            description = DESCRIPTION
+            inceptionYear = "2024"
+            url = "https://github.com/Progressive-Insurance/kherkin"
+            licenses {
+                license {
+                    name = "MIT License"
+                    url = "http://www.opensource.org/licenses/mit-license.php"
+                }
             }
-        }
-        developers {
-            developer {
-                id = "smugleafdev"
-                name = "Matthew Rockwell"
-                url = "https://github.com/smugleafdev"
+            developers {
+                developer {
+                    id = "smugleafdev"
+                    name = "Matthew Rockwell"
+                    url = "https://github.com/smugleafdev"
+                }
             }
-        }
-        scm {
-            url = "http://github.com/Progressive-Insurance/kherkin"
-            connection = "scm:git:https://github.com/Progressive-Insurance/kherkin.git"
-            developerConnection = "scm:git:ssh://github.com/Progressive-Insurance/kherkin.git"
+            scm {
+                url = "http://github.com/Progressive-Insurance/kherkin"
+                connection = "scm:git:https://github.com/Progressive-Insurance/kherkin.git"
+                developerConnection = "scm:git:ssh://github.com/Progressive-Insurance/kherkin.git"
+            }
         }
     }
 }
