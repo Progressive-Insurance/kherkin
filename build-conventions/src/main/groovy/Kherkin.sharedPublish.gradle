@@ -50,7 +50,7 @@ android {
 
 afterEvaluate {
     mavenPublishing {
-        publishToMavenCentral(true, DeploymentValidation.PUBLISHED)
+        publishToMavenCentral()
         signAllPublications()
 
         coordinates("com.progressive.kherkin", ARTIFACT_ID, getVersionName())
