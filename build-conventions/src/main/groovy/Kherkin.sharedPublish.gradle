@@ -12,9 +12,9 @@ def getVersionName = { ->
             standardOutput = stdout
         }
         def describe = stdout.toString().trim()
-//        if (describe.contains("-")) {
+        if (describe.contains("-")) {
             describe += "-SNAPSHOT"
-//        }
+        }
         return describe
     } catch (Exception ignored) {
         return "1.0.0"
