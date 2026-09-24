@@ -22,12 +22,12 @@ def getVersionName = { ->
 }
 
 android {
-    compileSdk 35
+    compileSdk 37
     version getVersionName()
 
     defaultConfig {
         minSdk 24
-        targetSdk 35
+        targetSdk 37
         versionName getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,7 +50,7 @@ android {
 
 afterEvaluate {
     mavenPublishing {
-        publishToMavenCentral()
+        publishToMavenCentral(true)
         signAllPublications()
 
         def groupId = "com.progressive.kherkin"

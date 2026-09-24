@@ -13,12 +13,12 @@ plugins {
 
 android {
     namespace 'com.progressive.kherkin.sampleapp'
-    compileSdk 35
+    compileSdk 37
 
     defaultConfig {
         applicationId "com.progressive.kherkin.sampleapp"
         minSdkVersion 24
-        targetSdkVersion 35
+        targetSdkVersion 37
         versionCode 1
         versionName "1.0"
 
