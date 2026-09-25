@@ -7,7 +7,6 @@ buildscript {
 
 plugins {
     alias libs.plugins.com.android.application
-    alias libs.plugins.kotlin.android
     alias libs.plugins.compose.compiler
 }
 
@@ -33,10 +32,6 @@ android {
     buildFeatures {
         viewBinding true
         compose true
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
     }
 
     testOptions {
