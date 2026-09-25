@@ -17,7 +17,7 @@ def getVersionName = { ->
         }
         return describe
     } catch (Exception ignored) {
-        throw new GradleException("Failed to get version name.")
+        return "1.0.0"
     }
 }
 
