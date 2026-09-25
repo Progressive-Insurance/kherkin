@@ -6,12 +6,9 @@ plugins {
 
 def getVersionName = { ->
     try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
+        def describe = providers.exec {
             commandLine 'git', 'describe', '--tags', 'HEAD'
-            standardOutput = stdout
-        }
-        def describe = stdout.toString().trim()
+        }.standardOutput.asText.get().trim()
         if (describe.contains("-")) {
             describe += "-SNAPSHOT"
         }
@@ -22,12 +19,12 @@ def getVersionName = { ->
 }
 
 android {
-    compileSdk 35
+    compileSdk 37
     version getVersionName()
 
     defaultConfig {
         minSdk 24
-        targetSdk 35
+        targetSdk 37
         versionName getVersionName()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -42,22 +39,25 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+}
 
-    kotlinOptions {
-        jvmTarget = '17'
+tasks.register('printVersion') {
+    doLast {
+        def groupId = "com.progressive.kherkin"
+        def artifactId = ARTIFACT_ID
+        def versionName = getVersionName()
+        logger.lifecycle("Publishing artifact: ${groupId}:${artifactId}:${versionName}")
     }
 }
 
 afterEvaluate {
+    tasks.withType(AbstractPublishToMaven).configureEach {
+        dependsOn(tasks.printVersion)
+    }
+
     mavenPublishing {
-        publishToMavenCentral()
+        publishToMavenCentral(true)
         signAllPublications()
-
-        def groupId = "com.progressive.kherkin"
-        def artifactId = ARTIFACT_ID
-        def versionName = getVersionName()
-
-        logger.lifecycle("Publishing artifact: ${groupId}:${artifactId}:${versionName}")
 
         coordinates("com.progressive.kherkin", ARTIFACT_ID, getVersionName())
 
