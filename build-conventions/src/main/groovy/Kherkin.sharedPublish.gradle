@@ -6,12 +6,9 @@ plugins {
 
 def getVersionName = { ->
     try {
-        def stdout = new ByteArrayOutputStream()
-        exec {
+        def describe = providers.exec {
             commandLine 'git', 'describe', '--tags', 'HEAD'
-            standardOutput = stdout
-        }
-        def describe = stdout.toString().trim()
+        }.standardOutput.asText.get().trim()
         if (describe.contains("-")) {
             describe += "-SNAPSHOT"
         }
