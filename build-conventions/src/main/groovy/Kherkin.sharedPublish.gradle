@@ -50,7 +50,9 @@ afterEvaluate {
         def artifactId = ARTIFACT_ID
         def versionName = getVersionName()
 
-        logger.lifecycle("Publishing artifact: ${groupId}:${artifactId}:${versionName}")
+        if (gradle.startParameter.taskNames.any { it.toLowerCase().contains("publish") }) {
+            logger.lifecycle("Publishing artifact: ${groupId}:${artifactId}:${versionName}")
+        }
 
         coordinates("com.progressive.kherkin", ARTIFACT_ID, getVersionName())
 
