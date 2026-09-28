@@ -29,14 +29,16 @@ fun Gherkin.ITouchNodeWithText(tag: String, text: String, composeTestRule: Compo
     composeTestRule.onNode(hasTestTag(tag).and(hasText(text))).assertHasClickAction().performClick()
 }
 
-/** Finds a node that contains an annotated link string with [text] and clicks it. */
-fun Gherkin.ITouchLinkWithText(text: String, composeTestRule: ComposeTestRule) {
+/** Finds a node that contains an annotated link string with [text] and clicks it.
+ * Uses optional flag for unmerged tree. Default is false. */
+fun Gherkin.ITouchLinkWithText(text: String, composeTestRule: ComposeTestRule, useUnmergedTree: Boolean = false) {
     ComposeTestLogger().info("${::ITouchLinkWithText.name}: onNodeWithText($text).performFirstLinkClick()")
-    composeTestRule.onNodeWithText(text).performFirstLinkClick()
+    composeTestRule.onNodeWithText(text, useUnmergedTree = useUnmergedTree).performFirstLinkClick()
 }
 
-/** Finds a node that contains an annotated link string with [tag] and clicks it. */
-fun Gherkin.ITouchLinkWithTag(tag: String, composeTestRule: ComposeTestRule) {
+/** Finds a node that contains an annotated link string with [tag] and clicks it.
+ * Uses optional flag for unmerged tree. Default is false. */
+fun Gherkin.ITouchLinkWithTag(tag: String, composeTestRule: ComposeTestRule, useUnmergedTree: Boolean = false) {
     ComposeTestLogger().info("${::ITouchLinkWithTag.name}: onNodeWithTag($tag).performFirstLinkClick()")
-    composeTestRule.onNodeWithTag(tag).performFirstLinkClick()
+    composeTestRule.onNodeWithTag(tag, useUnmergedTree = useUnmergedTree).performFirstLinkClick()
 }
