@@ -7,18 +7,17 @@ buildscript {
 
 plugins {
     alias libs.plugins.com.android.application
-    alias libs.plugins.kotlin.android
     alias libs.plugins.compose.compiler
 }
 
 android {
     namespace 'com.progressive.kherkin.sampleapp'
-    compileSdk 35
+    compileSdk 37
 
     defaultConfig {
         applicationId "com.progressive.kherkin.sampleapp"
         minSdkVersion 24
-        targetSdkVersion 35
+        targetSdkVersion 37
         versionCode 1
         versionName "1.0"
 
@@ -33,10 +32,6 @@ android {
     buildFeatures {
         viewBinding true
         compose true
-    }
-
-    kotlinOptions {
-        jvmTarget = '17'
     }
 
     testOptions {
