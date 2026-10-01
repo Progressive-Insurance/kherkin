@@ -6,8 +6,8 @@ buildscript {
 }
 
 plugins {
-    alias libs.plugins.com.android.library
-    id 'Kherkin.sharedPublish'
+    alias(libs.plugins.com.android.library)
+    id "Kherkin.sharedPublish"
 }
 
 ext {
@@ -16,19 +16,19 @@ ext {
 }
 
 android {
-    namespace 'com.progressive.kherkin.compose'
+    namespace "com.progressive.kherkin.compose"
 }
 
 dependencies {
     def composeBom = platform(libs.compose.bom)
-    implementation composeBom
-    androidTestImplementation composeBom
-    implementation libs.androidx.appcompat
-    implementation libs.material
-    implementation libs.javax.inject
-    testImplementation libs.junit
-    androidTestImplementation libs.androidx.junit
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.javax.inject)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
     api(libs.compose.test)
     api(libs.compose.testing)
-    api(project(':common'))
+    api(project(":common"))
 }

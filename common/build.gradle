@@ -6,8 +6,8 @@ buildscript {
 }
 
 plugins {
-    alias libs.plugins.com.android.library
-    id 'Kherkin.sharedPublish'
+    alias(libs.plugins.com.android.library)
+    id "Kherkin.sharedPublish"
 }
 
 ext {
@@ -15,22 +15,23 @@ ext {
     DESCRIPTION = "A dependency for kherkin-espresso and kherkin-compose"
 }
 
+//val ARTIFACT_ID = "kherkin-common"
+//val DESCRIPTION = "A dependency for kherkin-espresso and kherkin-compose"
+
 android {
-    namespace 'com.progressive.kherkin.common'
+    namespace = "com.progressive.kherkin.common"
 }
 
 dependencies {
-    implementation libs.androidx.appcompat
-    implementation libs.material
-
-    implementation libs.junit
-    implementation libs.androidx.junit
-    implementation libs.androidx.uiautomator
-    implementation libs.androidx.runner
-    implementation libs.findbugs
-    implementation libs.javax.inject
-
-    api libs.kotlin.test
-    api libs.androidx.rules
-    api libs.kotlin.reflect
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.junit)
+    implementation(libs.androidx.junit)
+    implementation(libs.androidx.uiautomator)
+    implementation(libs.androidx.runner)
+    implementation(libs.findbugs)
+    implementation(libs.javax.inject)
+    api(libs.kotlin.test)
+    api(libs.androidx.rules)
+    api(libs.kotlin.reflect)
 }

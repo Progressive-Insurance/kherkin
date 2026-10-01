@@ -6,8 +6,8 @@ buildscript {
 }
 
 plugins {
-    alias libs.plugins.com.android.library
-    id 'Kherkin.sharedPublish'
+    alias(libs.plugins.com.android.library)
+    id "Kherkin.sharedPublish"
 }
 
 ext {
@@ -16,17 +16,17 @@ ext {
 }
 
 android {
-    namespace 'com.progressive.kherkin.espresso'
+    namespace "com.progressive.kherkin.espresso"
 }
 
 dependencies {
-    implementation libs.androidx.appcompat
-    implementation libs.material
-    implementation libs.junit
-    implementation libs.androidx.junit
-    implementation libs.androidx.espresso.device
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.junit)
+    implementation(libs.androidx.junit)
+    implementation(libs.androidx.espresso.device)
     api(libs.androidx.uiautomator)
     api(libs.espresso.core)
     api(libs.espresso.contrib)
-    api(project(':common'))
+    api(project(":common"))
 }

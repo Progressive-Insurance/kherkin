@@ -1,13 +1,13 @@
 plugins {
-    id 'com.android.library'
-    id 'maven-publish'
-    id 'com.vanniktech.maven.publish'
+    id("com.android.library")
+    id("maven-publish")
+    id("com.vanniktech.maven.publish")
 }
 
 def getVersionName = { ->
     try {
         def describe = providers.exec {
-            commandLine 'git', 'describe', '--tags', 'HEAD'
+            commandLine "git", "describe", "--tags", "HEAD"
         }.standardOutput.asText.get().trim()
         if (describe.contains("-")) {
             describe += "-SNAPSHOT"
@@ -25,23 +25,23 @@ android {
     defaultConfig {
         minSdk 24
         targetSdk 37
-        versionName getVersionName()
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionName = getVersionName()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled = false
         }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 
-tasks.register('printVersion') {
+tasks.register("printVersion") {
     doLast {
         def groupId = "com.progressive.kherkin"
         def artifactId = ARTIFACT_ID
