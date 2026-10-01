@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.LibraryExtension
+
 buildscript {
     repositories {
         google()
@@ -7,18 +9,13 @@ buildscript {
 
 plugins {
     alias(libs.plugins.com.android.library)
-    id "Kherkin.sharedPublish"
+    id("Kherkin.sharedPublish")
 }
 
-ext {
-    ARTIFACT_ID = "kherkin-common"
-    DESCRIPTION = "A dependency for kherkin-espresso and kherkin-compose"
-}
+extensions.extraProperties["ARTIFACT_ID"] = "kherkin-common"
+extensions.extraProperties["DESCRIPTION"] = "A dependency for kherkin-espresso and kherkin-compose"
 
-//val ARTIFACT_ID = "kherkin-common"
-//val DESCRIPTION = "A dependency for kherkin-espresso and kherkin-compose"
-
-android {
+configure<LibraryExtension> {
     namespace = "com.progressive.kherkin.common"
 }
 

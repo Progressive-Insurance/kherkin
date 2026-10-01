@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 buildscript {
     repositories {
         google()
@@ -11,14 +13,14 @@ plugins {
 }
 
 android {
-    namespace "com.progressive.kherkin.sampleapp"
+    namespace = "com.progressive.kherkin.sampleapp"
     compileSdk = 37
 
     defaultConfig {
         applicationId = "com.progressive.kherkin.sampleapp"
-        minSdkVersion 24
-        targetSdkVersion 37
-        versionCode 1
+        minSdk = 24
+        targetSdk = 37
+        versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -38,7 +40,7 @@ android {
         execution = "ANDROIDX_TEST_ORCHESTRATOR"
         managedDevices {
             localDevices {
-                pixel5api35 {
+                create("pixel5api35") {
                     device = "Pixel 5"
                     apiLevel = 35
                     systemImageSource = "aosp-atd"
@@ -52,10 +54,7 @@ android {
 }
 
 dependencies {
-    def composeBom = platform(libs.compose.bom)
-    implementation composeBom
-    androidTestImplementation composeBom
-
+    implementation(platform(libs.compose.bom))
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)

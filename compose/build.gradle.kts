@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.LibraryExtension
+
 buildscript {
     repositories {
         google()
@@ -7,22 +9,18 @@ buildscript {
 
 plugins {
     alias(libs.plugins.com.android.library)
-    id "Kherkin.sharedPublish"
+    id("Kherkin.sharedPublish")
 }
 
-ext {
-    ARTIFACT_ID = "kherkin-compose"
-    DESCRIPTION = "An Android UI testing framework for Jetpack Compose screens that simplifies writing UI tests"
-}
+extensions.extraProperties["ARTIFACT_ID"] = "kherkin-compose"
+extensions.extraProperties["DESCRIPTION"] = "An Android UI testing framework for Jetpack Compose screens that simplifies writing UI tests"
 
-android {
-    namespace "com.progressive.kherkin.compose"
+configure<LibraryExtension> {
+    namespace = "com.progressive.kherkin.compose"
 }
 
 dependencies {
-    def composeBom = platform(libs.compose.bom)
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
+    implementation(platform(libs.compose.bom))
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.javax.inject)

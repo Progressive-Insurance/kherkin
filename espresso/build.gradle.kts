@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.LibraryExtension
+
 buildscript {
     repositories {
         google()
@@ -7,16 +9,14 @@ buildscript {
 
 plugins {
     alias(libs.plugins.com.android.library)
-    id "Kherkin.sharedPublish"
+    id("Kherkin.sharedPublish")
 }
 
-ext {
-    ARTIFACT_ID = "kherkin-espresso"
-    DESCRIPTION = "An Android UI testing framework for XML layouts that simplifies writing UI tests"
-}
+extensions.extraProperties["ARTIFACT_ID"] = "kherkin-espresso"
+extensions.extraProperties["DESCRIPTION"] = "An Android UI testing framework for XML layouts that simplifies writing UI tests"
 
-android {
-    namespace "com.progressive.kherkin.espresso"
+configure<LibraryExtension> {
+    namespace = "com.progressive.kherkin.espresso"
 }
 
 dependencies {
