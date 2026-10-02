@@ -1,4 +1,11 @@
-rootProject.name = "build-conventions"
+import org.gradle.kotlin.dsl.mavenCentral
+
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -7,3 +14,5 @@ dependencyResolutionManagement {
         }
     }
 }
+
+rootProject.name = "build-conventions"
