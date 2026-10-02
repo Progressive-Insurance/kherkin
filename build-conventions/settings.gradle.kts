@@ -2,6 +2,7 @@ import org.gradle.kotlin.dsl.mavenCentral
 
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
     }
