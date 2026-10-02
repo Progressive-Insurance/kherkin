@@ -12,8 +12,8 @@ plugins {
     alias(libs.plugins.kherkin.publish)
 }
 
-extensions.extraProperties["ARTIFACT_ID"] = "kherkin-common"
-extensions.extraProperties["DESCRIPTION"] = "A dependency for kherkin-espresso and kherkin-compose"
+extra.set("ARTIFACT_ID", "kherkin-common")
+extra.set("DESCRIPTION", "A dependency for kherkin-espresso and kherkin-compose")
 
 configure<LibraryExtension> {
     namespace = "com.progressive.kherkin.common"
