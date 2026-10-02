@@ -1,4 +1,4 @@
-import com.android.build.api.dsl.ManagedVirtualDevice
+import com.android.build.api.dsl.ApplicationExtension
 
 buildscript {
     repositories {
@@ -12,7 +12,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-android {
+configure<ApplicationExtension> {
     namespace = "com.progressive.kherkin.sampleapp"
     compileSdk = 37
 

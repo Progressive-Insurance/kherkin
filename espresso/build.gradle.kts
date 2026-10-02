@@ -9,7 +9,7 @@ buildscript {
 
 plugins {
     alias(libs.plugins.com.android.library)
-    id("Kherkin.sharedPublish")
+    alias(libs.plugins.kherkin.publish)
 }
 
 extensions.extraProperties["ARTIFACT_ID"] = "kherkin-espresso"
