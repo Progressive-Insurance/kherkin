@@ -8,7 +8,7 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.withType
 
-class SharedPublishPlugin: Plugin<Project> {
+class SharedPublishPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
