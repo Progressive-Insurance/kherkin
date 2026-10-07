@@ -2,6 +2,8 @@ plugins {
     `kotlin-dsl`
 }
 
+group = "com.progressive.kherkin.buildlogic"
+
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
