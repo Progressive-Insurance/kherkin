@@ -14,7 +14,7 @@ plugins {
 
 configure<ApplicationExtension> {
     namespace = "com.progressive.kherkin.sampleapp"
-    compileSdk = 37
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.progressive.kherkin.sampleapp"
