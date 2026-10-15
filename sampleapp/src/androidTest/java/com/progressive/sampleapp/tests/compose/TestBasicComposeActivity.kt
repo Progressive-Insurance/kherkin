@@ -74,4 +74,11 @@ class TestBasicComposeActivity : SampleBaseIntegrationTestCase() {
         When.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
         Then.ITouchLinkWithTag("annotatedLink", composeTestRule)
     }
+
+    @Test
+    fun testMergedAnnotatedLinkClickWithTag() {
+        Given.IRenderScreen(BasicComposeScreen(), composeTestRule)
+        When.IWaitToSeeScreen(BasicComposeScreen(), composeTestRule)
+        Then.ITouchLinkWithTag("longerAnnotatedLink", composeTestRule, true)
+    }
 }

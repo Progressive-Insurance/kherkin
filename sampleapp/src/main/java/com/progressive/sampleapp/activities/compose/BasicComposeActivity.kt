@@ -6,9 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -38,6 +41,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
@@ -87,14 +91,17 @@ fun SmallTopAppBar() {
             var buttonVisibility by remember { mutableStateOf(true) }
 
             Greeting()
-            BasicButton()
-            HidingButton(buttonIsVisible = buttonVisibility, changeValue = { buttonVisibility = it } )
+            Row {
+                BasicButton()
+                HidingButton(buttonIsVisible = buttonVisibility, changeValue = { buttonVisibility = it } )
+                NavigateButton()
+            }
             TextField()
             TextFieldPrefilled()
             TextFieldPrefilledDisabled()
             ScrollBoxes()
-            NavigateButton()
             Link()
+            ParagraphWithLink()
             Logo()
         }
     }
@@ -285,21 +292,58 @@ private fun Link() {
         }
     }
 
-    Column(modifier = Modifier.padding(10.dp)) {
+    Text(annotatedLinkString,
+        modifier = Modifier
+            .padding(10.dp)
+            .testTag("annotatedLink"))
+}
+
+@Composable
+private fun ParagraphWithLink() {
+    val annotatedLinkString: AnnotatedString = remember {
+        buildAnnotatedString {
+            val style = SpanStyle(color = Color.Black)
+            val styleCenter = SpanStyle(
+                color = Color(0xff64B5F6),
+                textDecoration = TextDecoration.Underline)
+
+            withStyle(style = style) {
+                append("Kherkin (Kotlin + Gherkin) is an instrumentation testing framework that simplifies writing UI tests for ")
+            }
+
+            withLink(LinkAnnotation.Url(url = "https://developer.android.com")) {
+                withStyle(style = styleCenter) {
+                    append("Android")
+                }
+            }
+
+            withStyle(style = style) {
+                append(". The Gherkin-like syntax makes it easier to build the test scenarios as a collaboration between developers and non-developers.")
+            }
+        }
+    }
+
+    Row(modifier = Modifier.semantics(mergeDescendants = true) {}) {
         Text(annotatedLinkString,
-            modifier = Modifier.testTag("annotatedLink"))
+            modifier = Modifier
+                .padding(10.dp)
+                .testTag("longerAnnotatedLink")
+        )
     }
 }
 
 @Composable
 private fun Logo() {
-    Image(
-        painter = painterResource(id = R.drawable.kherkin_logo),
-        contentDescription = stringResource(id = R.string.kherkin_logo_content_description),
-        modifier = Modifier
-            .size(120.dp)
-            .testTag("Logo")
-    )
+    Row(modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center) {
+        Image(
+            painter = painterResource(id = R.drawable.kherkin_logo),
+            contentDescription = stringResource(id = R.string.kherkin_logo_content_description),
+            modifier = Modifier
+                .size(120.dp)
+                .testTag("Logo")
+        )
+    }
 }
 
 @Preview(showBackground = true)
